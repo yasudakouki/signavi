@@ -18,7 +18,7 @@
 		39A8130B2CF62816004356E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39A8130A2CF62816004356E5 /* LaunchScreen.storyboard */; };
 		39A813152CF62FD4004356E5 /* best_640.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 39A813142CF62FD4004356E5 /* best_640.mlpackage */; };
 		39A813172CF6300D004356E5 /* soundplayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A813162CF6300D004356E5 /* soundplayer.swift */; };
-		39D36FC22CF5D2D1000876F6 /* yolov8s.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 39D36FC12CF5D2D1000876F6 /* yolov8s.mlpackage */; };
+		39A8131B2CF788D3004356E5 /* yolo11m_speed_limit_40.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 39A8131A2CF788D3004356E5 /* yolo11m_speed_limit_40.mlpackage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,7 +54,7 @@
 		39A8130A2CF62816004356E5 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		39A813142CF62FD4004356E5 /* best_640.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = best_640.mlpackage; sourceTree = "<group>"; };
 		39A813162CF6300D004356E5 /* soundplayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = soundplayer.swift; sourceTree = "<group>"; };
-		39D36FC12CF5D2D1000876F6 /* yolov8s.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = yolov8s.mlpackage; sourceTree = "<group>"; };
+		39A8131A2CF788D3004356E5 /* yolo11m_speed_limit_40.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = yolo11m_speed_limit_40.mlpackage; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,9 +105,9 @@
 		391DA6702CF5B0A4007DF9C8 /* signavi_app */ = {
 			isa = PBXGroup;
 			children = (
+				39A8131A2CF788D3004356E5 /* yolo11m_speed_limit_40.mlpackage */,
 				39A813142CF62FD4004356E5 /* best_640.mlpackage */,
 				39A813042CF624BA004356E5 /* Info.plist */,
-				39D36FC12CF5D2D1000876F6 /* yolov8s.mlpackage */,
 				391DA6A12CF5B1D9007DF9C8 /* AppDelegate.swift */,
 				391DA69D2CF5B155007DF9C8 /* SceneDelegate.swift */,
 				391DA69F2CF5B15B007DF9C8 /* ViewController.swift */,
@@ -268,7 +268,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				39D36FC22CF5D2D1000876F6 /* yolov8s.mlpackage in Sources */,
+				39A8131B2CF788D3004356E5 /* yolo11m_speed_limit_40.mlpackage in Sources */,
 				39A813152CF62FD4004356E5 /* best_640.mlpackage in Sources */,
 				39A813172CF6300D004356E5 /* soundplayer.swift in Sources */,
 				391DA6A02CF5B15B007DF9C8 /* ViewController.swift in Sources */,

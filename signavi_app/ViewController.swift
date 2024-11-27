@@ -24,7 +24,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     
     lazy var yoloRequest:VNCoreMLRequest! = {
         do {
-            let model = try best_640().model
+            let model = try yolo11m_speed_limit_40().model
             guard let classes = model.modelDescription.classLabels as? [String] else {
                 fatalError()
             }
@@ -65,14 +65,18 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         }
         captureSession.commitConfiguration()
 
-//        previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-//        previewLayer?.frame = previewView.bounds
-//        previewLayer?.connection?.videoOrientation = AVCaptureVideoOrientation.portrait
-//        previewView.layer.addSublayer(previewLayer!)
+        // フレームレートに基づいてframeIntervalを設定
+        // FPS制限だけど、初期設定の1/10するだけになっているな
+        if let frameRate = device?.activeVideoMinFrameDuration.timescale {
+            let videoFPS = Int(frameRate)
+            frameInterval = max(1, videoFPS / 10) // FPSの制限
+        }
+
         DispatchQueue.global(qos: .userInitiated).async {
             self.captureSession.startRunning()
         }
     }
+
     
     func detection(pixelBuffer: CVPixelBuffer) -> UIImage? {
         do {
