@@ -4,6 +4,11 @@ import Vision
 
 class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate,AVCapturePhotoCaptureDelegate {
     
+    //音を流す用に追加
+    let musicplayer = SoundPlayer()
+    //画面FPSの設定用に追加
+    var desiredFrameRate = 30
+    
     var captureSession = AVCaptureSession()
     var previewView = UIImageView()
     var previewLayer:AVCaptureVideoPreviewLayer!
@@ -24,7 +29,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     
     lazy var yoloRequest:VNCoreMLRequest! = {
         do {
-            let model = try yolo11m_speed_limit_40().model
+            let model = try best_640().model
             guard let classes = model.modelDescription.classLabels as? [String] else {
                 fatalError()
             }
@@ -47,10 +52,19 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         previewView.frame = view.bounds
         view.addSubview(previewView)
 
+
+
+        
+        guard let device = AVCaptureDevice.default(for: AVMediaType.video) else {
+            print("Error: No video devices available")
+            return
+        }
+        
+        
+        let deviceInput = try! AVCaptureDeviceInput(device: device)
+        
         captureSession.beginConfiguration()
 
-        let device = AVCaptureDevice.default(for: AVMediaType.video)
-        let deviceInput = try! AVCaptureDeviceInput(device: device!)
 
         captureSession.addInput(deviceInput)
         videoOutput = AVCaptureVideoDataOutput()
@@ -65,18 +79,32 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         }
         captureSession.commitConfiguration()
 
-        // フレームレートに基づいてframeIntervalを設定
-        // FPS制限だけど、初期設定の1/10するだけになっているな
-        if let frameRate = device?.activeVideoMinFrameDuration.timescale {
-            let videoFPS = Int(frameRate)
-            frameInterval = max(1, videoFPS / 10) // FPSの制限
-        }
-
         DispatchQueue.global(qos: .userInitiated).async {
             self.captureSession.startRunning()
         }
-    }
+        
+        
+        // フレームレート設定
+        //絶対最後にいれろ 絶対だぞ絶対
+        //カメラとの接続などがない状態で設定しても意味ない的な感じかも
+        do {
+            
+            try device.lockForConfiguration()
 
+            // フレームレートの設定
+            device.activeVideoMinFrameDuration = CMTimeMake( value: 1, timescale: Int32(desiredFrameRate)  )
+            device.activeVideoMaxFrameDuration = CMTimeMake( value: 1, timescale: Int32(desiredFrameRate)  )
+
+            // 設定後、ロック解除
+            device.unlockForConfiguration()
+            print("Frame rate configured")
+        } catch {
+            // エラーハンドリング：ロック失敗時
+            print("Error locking configuration: \(error)")
+            return
+        }
+        
+    }
     
     func detection(pixelBuffer: CVPixelBuffer) -> UIImage? {
         do {
@@ -100,7 +128,6 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             let drawImage = drawRectsOnImage(detections, pixelBuffer)
             return drawImage
         } catch let error {
-            print(error)
             return nil
         }
     }
