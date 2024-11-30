@@ -4,16 +4,18 @@ import Vision
 
 class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate,AVCapturePhotoCaptureDelegate {
     
+    //画面に表示するラベル用
+    @IBOutlet weak var skip_frame_label: UILabel!
     //音を流す用に追加
     let musicplayer = SoundPlayer()
     //画面FPSの設定用に追加
-    var desiredFrameRate = 30
+    var desiredFrameRate = 2
     
     var captureSession = AVCaptureSession()
     var previewView = UIImageView()
     var previewLayer:AVCaptureVideoPreviewLayer!
     var videoOutput:AVCaptureVideoDataOutput!
-    var frameCounter = 0
+    var miss_frameCounter = 0
     var frameInterval = 1
     var videoSize = CGSize.zero
     let colors:[UIColor] = {
@@ -53,7 +55,14 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         view.addSubview(previewView)
 
 
-
+        //ミスカウントのためのラベル設定（配置など)
+        skip_frame_label.frame = CGRect(x: 20, y: 40, width: 600, height: 60)
+        skip_frame_label.text="skip_frame:0"
+        
+        
+        view.addSubview(skip_frame_label)
+        // ラベルを前面に移動 これなしだとカメラ映像の下になる
+        view.bringSubviewToFront(skip_frame_label)
         
         guard let device = AVCaptureDevice.default(for: AVMediaType.video) else {
             print("Error: No video devices available")
@@ -84,9 +93,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         }
         
         
-        // フレームレート設定
-        //絶対最後にいれろ 絶対だぞ絶対
-        //カメラとの接続などがない状態で設定しても意味ない的な感じかも
+        // フレームレート設定  絶対最後にいれろ 絶対だぞ絶対
+        // ↑カメラとの接続などがない状態で設定しても意味ない的な感じかも
         do {
             
             try device.lockForConfiguration()
@@ -128,6 +136,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             let drawImage = drawRectsOnImage(detections, pixelBuffer)
             return drawImage
         } catch let error {
+            print(error)
             return nil
         }
     }
@@ -180,8 +189,23 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         return UIImage(ciImage: CIImage(cgImage: newImage))
     }
 
-    func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        frameCounter += 1
+    
+    //from connecitonによりカメラからフレームくるたびに実行される
+    func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection)
+    {
+        
+        
+        
+        
+        
+        miss_frameCounter += 1
+        
+        
+        // UIの更新はメインスレッドで実行
+        DispatchQueue.main.async {
+            self.skip_frame_label.text = "frame count: " + String(self.miss_frameCounter)
+        }
+        
         if videoSize == CGSize.zero {
             guard let width = sampleBuffer.formatDescription?.dimensions.width,
                   let height = sampleBuffer.formatDescription?.dimensions.height else {
@@ -189,6 +213,12 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             }
             videoSize = CGSize(width: CGFloat(width), height: CGFloat(height))
         }
+        
+        
+        
+        //if frameintervalによる設定はいらないかも、 if抜きで下に設定している
+        //一応 /* */ で残してる
+        /*
         if frameCounter == frameInterval {
             frameCounter = 0
             guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
@@ -198,6 +228,15 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             DispatchQueue.main.async {
                 self.previewView.image = drawImage
             }
+        }
+        */
+        
+        guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
+        guard let drawImage = detection(pixelBuffer: pixelBuffer) else {
+            return
+        }
+        DispatchQueue.main.async {
+            self.previewView.image = drawImage
         }
 
     }
