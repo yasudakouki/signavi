@@ -1,36 +1,59 @@
-import UIKit
+import UIKit  // 画面の表示、イベント処理などを提供
 
-// UIResponderクラスを継承し、UIApplicationDelegateプロトコルを採用
-// @main属性でこのクラスがアプリケーションのエントリーポイントであることを示す
+// アプリのエントリーポイントを明示。ここ（AppDelegate）をアプリの起点として実行する
+// あまり考えなくて良い
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-    // アプリケーションが起動した直後に呼び出されるメソッド
-    // application: 現在のアプリケーションのインスタンス
-    // launchOptions: アプリ起動時のオプション情報（通知やURLスキームなど）
-    // 戻り値: 正常に起動処理を完了した場合は true を返す
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // カスタマイズ可能な起動時の設定処理を書く場所
-        return true // 起動処理が成功したことをシステムに通知
+    /*
+     継承
+        UIRespnder: イベントを受け取り、必要な処理を行う機能を提供
+     プロトコル
+        UIApplicationDelegate: アプリのライフサイクル（起動、処理、終了とか）に関するイベントを管理
+    */
+    
+    
+    func application(_ application: UIApplication, didFinishLanchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        /*
+         役割
+            アプリの起動時に一度だけ呼ばれる
+            通常はアプリ全体の初期設定を記述（例: Firebaseの初期化、データベースのセットアップ、etc...）
+            正常に起動したらtrueを返す
+         
+         引数
+            applicaition:
+                アプリのインスタンス
+            launchOptions: 起動オプション情報（例: 通知から起動された場合のデータ）
+                - 例: 通知（.remoteNotification）やURLスキーム（.url）からの起動情報
+         
+         戻り値
+            bool: 正常に起動したらtrueを返す
+        */
+        print("アプリが起動しました")
+        return true
     }
-
-    // MARK: UISceneSession Lifecycle
-
-    // 新しいシーンセッション（画面やウィンドウ）が作成される際に呼び出されるメソッド
-    // application: 現在のアプリケーションインスタンス
-    // connectingSceneSession: 作成中のシーンセッション情報
-    // options: シーン接続時のオプション情報
-    // 戻り値: 新しいシーンの設定（UISceneConfigurationオブジェクト）
+    
+    
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
-        // デフォルト設定のシーン構成を返す
+        /*
+         役割
+            新しいシーン（ウィンドウ）を作成する際に呼ばれる
+            SceneDelegate.swiftに渡す設定をここで指定
+        
+         戻り値
+            UISceneConfiguration: シーンの名前や役割を指定する設定
+        */
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
-
-    // シーンセッションが破棄されたときに呼び出されるメソッド
-    // application: 現在のアプリケーションインスタンス
-    // sceneSessions: 破棄されたシーンセッションのセット
+    
+    
     func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
-        // シーンが破棄された際に解放するリソースがあればここで処理を記述
-        // アプリがバックグラウンドにいるときに破棄された場合もこのメソッドが呼び出される
+        /*
+         役割
+            使用されなくなったシーン（ウィンドウ）を破棄する際に呼ばれる
+            主に関連リソースの開放処理を記述
+        */
+        
+        // 以下にリソース解放などの処理を記述
     }
+
 }

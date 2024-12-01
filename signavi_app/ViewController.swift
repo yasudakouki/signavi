@@ -1,211 +1,160 @@
 import UIKit
 import AVFoundation
-import Vision
 
-class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate,AVCapturePhotoCaptureDelegate {
+// アプリのメイン画面を管理するクラス
+class ViewController: UIViewController {
+    /*
+     使用タイミング:
+        - アプリが起動し、ユーザーがカメラを操作して物体検知を行うとき
+        - カメラ映像のプレビューを表示し、物体検知結果をリアルタイムに描画する
+     
+     役割:
+        - CameraManager: カメラの映像を管理
+        - ObjectDetector: 物体検知のロジックを実行
+        - DetectionDrawer: 検知結果を画面に描画
+    */
+
+    // カメラの制御を担当するクラス（CameraManager.swift）
+    private let cameraManager = CameraManager()
     
-    //音を流す用に追加
-    let musicplayer = SoundPlayer()
-    //画面FPSの設定用に追加
-    var desiredFrameRate = 30
+    // CoreMLモデルを使用した物体検知を行うクラス（ObjectDetector.swift）
+    private let objectDetector = ObjectDetector(modelName: "best_640")
+    /*
+     注意:
+        - modelNameの "" はプロジェクト内の .mlmodelc ファイルの名前に置き換えてください
+        - モデル名が一致しないとロードエラーが発生します
+    */
     
-    var captureSession = AVCaptureSession()
-    var previewView = UIImageView()
-    var previewLayer:AVCaptureVideoPreviewLayer!
-    var videoOutput:AVCaptureVideoDataOutput!
-    var frameCounter = 0
-    var frameInterval = 1
-    var videoSize = CGSize.zero
-    let colors:[UIColor] = {
-        var colorSet:[UIColor] = []
-        for _ in 0...80 {
-            let color = UIColor(red: CGFloat.random(in: 0...1), green: CGFloat.random(in: 0...1), blue: CGFloat.random(in: 0...1), alpha: 1)
-            colorSet.append(color)
-        }
-        return colorSet
-    }()
-    let ciContext = CIContext()
-    var classes:[String] = []
+    // 検知結果を描画するクラス（DetectionDrawer.swift）
+    private let detectionDrawer = DetectionDrawer()
     
-    lazy var yoloRequest:VNCoreMLRequest! = {
-        do {
-            let model = try best_640().model
-            guard let classes = model.modelDescription.classLabels as? [String] else {
-                fatalError()
-            }
-            self.classes = classes
-            let vnModel = try VNCoreMLModel(for: model)
-            let request = VNCoreMLRequest(model: vnModel)
-            return request
-        } catch let error {
-            fatalError("mlmodel error.")
-        }
-    }()
+    // カメラ映像を表示するためのプレビューレイヤー
+    private var previewLayer: AVCaptureVideoPreviewLayer?
     
+    // 検知結果を重ねて表示するためのオーバーレイビュー
+    private let overlayView = UIImageView()
+
+    // フレームスキップ用プロパティ
+    private var frameCounter = 0  // フレームカウンター
+    private let frameSkipInterval = 3 // スキップするフレーム間隔  3フレームに1回処理する
+
     override func viewDidLoad() {
+        /*
+         役割:
+            - 画面が初めてロードされたときに呼び出されるメソッド
+            - 初期設定を行う
+        */
         super.viewDidLoad()
-        setupVideo()
-    }
-
-
-    func setupVideo(){
-        previewView.frame = view.bounds
-        view.addSubview(previewView)
-
-
-
         
-        guard let device = AVCaptureDevice.default(for: AVMediaType.video) else {
-            print("Error: No video devices available")
-            return
-        }
+        // カメラのセットアップ
+        setupCamera()
         
-        
-        let deviceInput = try! AVCaptureDeviceInput(device: device)
-        
-        captureSession.beginConfiguration()
-
-
-        captureSession.addInput(deviceInput)
-        videoOutput = AVCaptureVideoDataOutput()
-
-        let queue = DispatchQueue(label: "VideoQueue")
-        videoOutput.setSampleBufferDelegate(self, queue: queue)
-        captureSession.addOutput(videoOutput)
-        if let videoConnection = videoOutput.connection(with: .video) {
-            if videoConnection.isVideoOrientationSupported {
-                videoConnection.videoOrientation = .portrait
-            }
-        }
-        captureSession.commitConfiguration()
-
-        DispatchQueue.global(qos: .userInitiated).async {
-            self.captureSession.startRunning()
-        }
-        
-        
-        // フレームレート設定
-        //絶対最後にいれろ 絶対だぞ絶対
-        //カメラとの接続などがない状態で設定しても意味ない的な感じかも
-        do {
-            
-            try device.lockForConfiguration()
-
-            // フレームレートの設定
-            device.activeVideoMinFrameDuration = CMTimeMake( value: 1, timescale: Int32(desiredFrameRate)  )
-            device.activeVideoMaxFrameDuration = CMTimeMake( value: 1, timescale: Int32(desiredFrameRate)  )
-
-            // 設定後、ロック解除
-            device.unlockForConfiguration()
-            print("Frame rate configured")
-        } catch {
-            // エラーハンドリング：ロック失敗時
-            print("Error locking configuration: \(error)")
-            return
-        }
-        
+        // フレーム処理（物体検知と描画）を設定
+        setupFrameProcessing()
     }
     
-    func detection(pixelBuffer: CVPixelBuffer) -> UIImage? {
-        do {
-            let handler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer)
-            try handler.perform([yoloRequest])
-            guard let results = yoloRequest.results as? [VNRecognizedObjectObservation] else {
-                return nil
-            }
-            var detections:[Detection] = []
-            for result in results {
-                let flippedBox = CGRect(x: result.boundingBox.minX, y: 1 - result.boundingBox.maxY, width: result.boundingBox.width, height: result.boundingBox.height)
-                let box = VNImageRectForNormalizedRect(flippedBox, Int(videoSize.width), Int(videoSize.height))
-
-                guard let label = result.labels.first?.identifier as? String,
-                        let colorIndex = classes.firstIndex(of: label) else {
-                        return nil
-                }
-                let detection = Detection(box: box, confidence: result.confidence, label: label, color: colors[colorIndex])
-                detections.append(detection)
-            }
-            let drawImage = drawRectsOnImage(detections, pixelBuffer)
-            return drawImage
-        } catch let error {
-            return nil
-        }
-    }
     
-    func drawRectsOnImage(_ detections: [Detection], _ pixelBuffer: CVPixelBuffer) -> UIImage? {
-        let ciImage = CIImage(cvPixelBuffer: pixelBuffer)
-        let cgImage = ciContext.createCGImage(ciImage, from: ciImage.extent)!
-        let size = ciImage.extent.size
-        guard let cgContext = CGContext(data: nil,
-                                        width: Int(size.width),
-                                        height: Int(size.height),
-                                        bitsPerComponent: 8,
-                                        bytesPerRow: 4 * Int(size.width),
-                                        space: CGColorSpaceCreateDeviceRGB(),
-                                        bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue) else { return nil }
-        cgContext.draw(cgImage, in: CGRect(origin: .zero, size: size))
-        for detection in detections {
-            let invertedBox = CGRect(x: detection.box.minX, y: size.height - detection.box.maxY, width: detection.box.width, height: detection.box.height)
-            if let labelText = detection.label {
-                cgContext.textMatrix = .identity
-                
-                let text = "\(labelText) : \(round(detection.confidence*100))"
-                
-                let textRect  = CGRect(x: invertedBox.minX + size.width * 0.01, y: invertedBox.minY - size.width * 0.01, width: invertedBox.width, height: invertedBox.height)
-                let textStyle = NSMutableParagraphStyle.default.mutableCopy() as! NSMutableParagraphStyle
-                
-                let textFontAttributes = [
-                    NSAttributedString.Key.font: UIFont.systemFont(ofSize: textRect.width * 0.1, weight: .bold),
-                    NSAttributedString.Key.foregroundColor: detection.color,
-                    NSAttributedString.Key.paragraphStyle: textStyle
-                ]
-                
-                cgContext.saveGState()
-                defer { cgContext.restoreGState() }
-                let astr = NSAttributedString(string: text, attributes: textFontAttributes)
-                let setter = CTFramesetterCreateWithAttributedString(astr)
-                let path = CGPath(rect: textRect, transform: nil)
-                
-                let frame = CTFramesetterCreateFrame(setter, CFRange(), path, nil)
-                cgContext.textMatrix = CGAffineTransform.identity
-                CTFrameDraw(frame, cgContext)
-                
-                cgContext.setStrokeColor(detection.color.cgColor)
-                cgContext.setLineWidth(9)
-                cgContext.stroke(invertedBox)
-            }
+    private func setupCamera() {
+        /*
+         役割:
+            - CameraManagerを使用してカメラをセットアップし、プレビューを表示
+            - カメラ映像を画面に直接表示する
+        */
+        
+        cameraManager.delegate = self // カメラフレームのデリゲートをViewControllerに設定
+        
+        // CameraManagerでカメラ映像のプレビューレイヤーを作成
+        if let previewLayer = cameraManager.setupVideo() {
+            /*
+             - previewLayer: カメラ映像を表示するためのレイヤー
+             - これを画面全体に合わせるため、`view.bounds` に設定する
+            */
+            previewLayer.frame = view.bounds // プレビューレイヤーのサイズを画面全体に設定
+            previewLayer.connection?.videoOrientation = .portrait  // プレビューの向きを縦向きに設定
+            view.layer.addSublayer(previewLayer) // カメラ映像を画面に表示
+            self.previewLayer = previewLayer // プレビューレイヤーをプロパティとして保持
         }
         
-        guard let newImage = cgContext.makeImage() else { return nil }
-        return UIImage(ciImage: CIImage(cgImage: newImage))
+        // 検知結果を描画するためのオーバーレイビューを設定
+        overlayView.frame = view.bounds // オーバーレイビューのサイズを画面全体に設定
+        overlayView.contentMode = .scaleAspectFill // 映像を縦横比を維持したまま全体に拡大
+        view.addSubview(overlayView) // オーバーレイビューを画面に追加
     }
-
-    func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        frameCounter += 1
-        if videoSize == CGSize.zero {
-            guard let width = sampleBuffer.formatDescription?.dimensions.width,
-                  let height = sampleBuffer.formatDescription?.dimensions.height else {
-                fatalError()
-            }
-            videoSize = CGSize(width: CGFloat(width), height: CGFloat(height))
-        }
-        if frameCounter == frameInterval {
-            frameCounter = 0
-            guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
-            guard let drawImage = detection(pixelBuffer: pixelBuffer) else {
-                return
-            }
-            DispatchQueue.main.async {
-                self.previewView.image = drawImage
-            }
-        }
-
+    
+    private func setupFrameProcessing() {
+        /*
+         役割:
+            - カメラフレームが更新されるたびに物体検知を実行し、描画する処理を設定
+        */
+        cameraManager.delegate = self // CameraManagerのデリゲートを設定
     }
 }
 
-struct Detection {
-    let box:CGRect
-    let confidence:Float
-    let label:String?
-    let color:UIColor
+
+// AVCaptureVideoDataOutputSampleBufferDelegateに関連するコード
+extension ViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
+    /*
+     AVCaptureVideoDataOutputSampleBufferDelegate:
+        - カメラフレームのデータをリアルタイムに受け取るためのデリゲート。
+        - フレームごとの処理をカスタマイズ可能。
+    */
+    
+    func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+        /*
+         役割:
+            - カメラから取得したフレームデータ（sampleBuffer）を処理。
+            - 物体検知を実行し、検知結果を描画。
+         引数:
+            - output: フレームデータの出力元。
+            - sampleBuffer: カメラフレームデータ（ピクセルデータ）。
+            - connection: 出力元との接続情報。
+         */
+        
+        // フレームスキップ処理
+        frameCounter += 1
+        if frameCounter % frameSkipInterval != 0 {
+            return // このフレームはスキップ
+        }
+        
+        frameCounter = 0 // カウンターをリセット
+        // カメラフレームのピクセルデータを取得
+        guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {
+            print("Error: ピクセルバッファの取得に失敗しました")
+            return
+        }
+        
+        // 非同期で物体検知を実行（ObjectDetectorを使用）
+        objectDetector.performDetection(on: pixelBuffer) { [weak self] observations in
+            /*
+             performDetectionの結果:
+                - detections: 検知結果（ラベル、信頼度、バウンディングボックス）。
+                - self: クロージャ内でViewControllerのインスタンスを保持。
+             */
+            
+            guard let self = self, let observations = observations else {
+                print("Error: 推論結果がnilです")
+                return
+            }
+            
+            // VNRecognizedObjectObservation を Detection に変換
+            let detections: [Detection] = observations.compactMap { observation in
+                guard let label = observation.labels.first else {
+                    print("Observation \(observation) にラベルが見つかりません")
+                    return nil
+                }
+                return Detection(
+                    box: observation.boundingBox,
+                    confidence: label.confidence,
+                    label: label.identifier,
+                    color: .red
+                )
+            }
+            
+            // 検知結果を描画（DetectionDrawerを使用）
+            DispatchQueue.main.async {
+                let renderedImage = self.detectionDrawer.render(detections: detections, on: pixelBuffer)
+                self.overlayView.image = renderedImage // 描画結果をオーバーレイビューに設定
+            }
+        }
+    }
 }

@@ -19,6 +19,10 @@
 		39A813152CF62FD4004356E5 /* best_640.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 39A813142CF62FD4004356E5 /* best_640.mlpackage */; };
 		39A813172CF6300D004356E5 /* soundplayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A813162CF6300D004356E5 /* soundplayer.swift */; };
 		39A8131B2CF788D3004356E5 /* yolo11m_speed_limit_40.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 39A8131A2CF788D3004356E5 /* yolo11m_speed_limit_40.mlpackage */; };
+		ED62169C2CFBE9AE0074162D /* CameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED62169B2CFBE9A10074162D /* CameraManager.swift */; };
+		ED62169E2CFC2CE20074162D /* ObjectDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED62169D2CFC2CDA0074162D /* ObjectDetector.swift */; };
+		ED6216A02CFC32C30074162D /* DetectionDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED62169F2CFC32B50074162D /* DetectionDrawer.swift */; };
+		ED6216A22CFC47D30074162D /* Dtection.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6216A12CFC47D00074162D /* Dtection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +59,10 @@
 		39A813142CF62FD4004356E5 /* best_640.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = best_640.mlpackage; sourceTree = "<group>"; };
 		39A813162CF6300D004356E5 /* soundplayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = soundplayer.swift; sourceTree = "<group>"; };
 		39A8131A2CF788D3004356E5 /* yolo11m_speed_limit_40.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = yolo11m_speed_limit_40.mlpackage; sourceTree = "<group>"; };
+		ED62169B2CFBE9A10074162D /* CameraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraManager.swift; sourceTree = "<group>"; };
+		ED62169D2CFC2CDA0074162D /* ObjectDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectDetector.swift; sourceTree = "<group>"; };
+		ED62169F2CFC32B50074162D /* DetectionDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectionDrawer.swift; sourceTree = "<group>"; };
+		ED6216A12CFC47D00074162D /* Dtection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dtection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,7 +119,11 @@
 				391DA6A12CF5B1D9007DF9C8 /* AppDelegate.swift */,
 				391DA69D2CF5B155007DF9C8 /* SceneDelegate.swift */,
 				391DA69F2CF5B15B007DF9C8 /* ViewController.swift */,
+				ED62169B2CFBE9A10074162D /* CameraManager.swift */,
+				ED62169D2CFC2CDA0074162D /* ObjectDetector.swift */,
+				ED62169F2CFC32B50074162D /* DetectionDrawer.swift */,
 				39A813162CF6300D004356E5 /* soundplayer.swift */,
+				ED6216A12CFC47D00074162D /* Dtection.swift */,
 				391DA6752CF5B0A6007DF9C8 /* Assets.xcassets */,
 				39A813082CF6280E004356E5 /* Main.storyboard */,
 				39A8130A2CF62816004356E5 /* LaunchScreen.storyboard */,
@@ -268,7 +280,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED62169E2CFC2CE20074162D /* ObjectDetector.swift in Sources */,
+				ED6216A02CFC32C30074162D /* DetectionDrawer.swift in Sources */,
 				39A8131B2CF788D3004356E5 /* yolo11m_speed_limit_40.mlpackage in Sources */,
+				ED6216A22CFC47D30074162D /* Dtection.swift in Sources */,
+				ED62169C2CFBE9AE0074162D /* CameraManager.swift in Sources */,
 				39A813152CF62FD4004356E5 /* best_640.mlpackage in Sources */,
 				39A813172CF6300D004356E5 /* soundplayer.swift in Sources */,
 				391DA6A02CF5B15B007DF9C8 /* ViewController.swift in Sources */,
