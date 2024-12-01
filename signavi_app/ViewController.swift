@@ -1,15 +1,22 @@
 import UIKit
 import AVFoundation
 import Vision
+import Foundation
 
 class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate,AVCapturePhotoCaptureDelegate {
     
     //画面に表示するラベル用
-    @IBOutlet weak var skip_frame_label: UILabel!
+    @IBOutlet weak var estimate_cals_time: UILabel!
+    
+    //時間の計測を確認するため
+    var now: Date!
+    var after_calc_time = 0
+    var before_calc_time = 0
+    var calc_time = 0
     //音を流す用に追加
     let musicplayer = SoundPlayer()
     //画面FPSの設定用に追加
-    var desiredFrameRate = 2
+    var desiredFrameRate = 30
     
     var captureSession = AVCaptureSession()
     var previewView = UIImageView()
@@ -45,6 +52,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     }()
     
     override func viewDidLoad() {
+        //時間計測用にカメラを準備するタイミングで時間の構造体も準備
+        now = Date()
         super.viewDidLoad()
         setupVideo()
     }
@@ -54,15 +63,14 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         previewView.frame = view.bounds
         view.addSubview(previewView)
 
-
         //ミスカウントのためのラベル設定（配置など)
-        skip_frame_label.frame = CGRect(x: 20, y: 40, width: 600, height: 60)
-        skip_frame_label.text="skip_frame:0"
+        estimate_cals_time.frame = CGRect(x: 20, y: 40, width: 600, height: 60)
+        estimate_cals_time.text="label set complete"
         
         
-        view.addSubview(skip_frame_label)
+        view.addSubview(estimate_cals_time)
         // ラベルを前面に移動 これなしだとカメラ映像の下になる
-        view.bringSubviewToFront(skip_frame_label)
+        view.bringSubviewToFront(estimate_cals_time)
         
         guard let device = AVCaptureDevice.default(for: AVMediaType.video) else {
             print("Error: No video devices available")
@@ -193,18 +201,9 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     //from connecitonによりカメラからフレームくるたびに実行される
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection)
     {
+        //演算時間の計算に使用
+        before_calc_time = Int(Date().timeIntervalSince(now) * 1000)
         
-        
-        
-        
-        
-        miss_frameCounter += 1
-        
-        
-        // UIの更新はメインスレッドで実行
-        DispatchQueue.main.async {
-            self.skip_frame_label.text = "frame count: " + String(self.miss_frameCounter)
-        }
         
         if videoSize == CGSize.zero {
             guard let width = sampleBuffer.formatDescription?.dimensions.width,
@@ -213,8 +212,6 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             }
             videoSize = CGSize(width: CGFloat(width), height: CGFloat(height))
         }
-        
-        
         
         //if frameintervalによる設定はいらないかも、 if抜きで下に設定している
         //一応 /* */ で残してる
@@ -235,9 +232,22 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         guard let drawImage = detection(pixelBuffer: pixelBuffer) else {
             return
         }
+        
+
+        //推定時間を計算してラベルに反映
+        after_calc_time = Int(Date().timeIntervalSince(now) * 1000)
+        
+        calc_time = after_calc_time - before_calc_time
+
+        
         DispatchQueue.main.async {
             self.previewView.image = drawImage
+                       
+            
+            self.estimate_cals_time.text = "estimate calc time: " + String(self.calc_time) + "ms"
         }
+        
+        
 
     }
 }
