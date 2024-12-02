@@ -85,8 +85,12 @@ class CameraManager: NSObject {
         let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession!)
         previewLayer.videoGravity = .resizeAspectFill  // 映像を画面全体にフィットさせる
         
-        // セッションを開始（映像データの取得とプレビューの開始）
-        captureSession?.startRunning()
+//        // セッションを開始（映像データの取得とプレビューの開始）
+//        captureSession?.startRunning()
+        // セッション開始をバックグラウンドスレッドで実行(紫の警告回避)
+        DispatchQueue.global(qos: .userInitiated).async {
+            self.captureSession?.startRunning()
+        }
         
         return previewLayer  // プレビュー表示用のレイヤーを返す
     }

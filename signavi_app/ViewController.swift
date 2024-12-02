@@ -18,7 +18,8 @@ class ViewController: UIViewController {
     private let cameraManager = CameraManager()
     
     // CoreMLモデルを使用した物体検知を行うクラス（ObjectDetector.swift）
-    private let objectDetector = ObjectDetector(modelName: "best_640")
+//    private let objectDetector = ObjectDetector(modelName: "best_640")
+    private let objectDetector = ObjectDetector(modelName: "yolo11n")
     /*
      注意:
         - modelNameの "" はプロジェクト内の .mlmodelc ファイルの名前に置き換えてください
@@ -86,7 +87,7 @@ class ViewController: UIViewController {
          役割:
             - カメラフレームが更新されるたびに物体検知を実行し、描画する処理を設定
         */
-        cameraManager.delegate = self // CameraManagerのデリゲートを設定
+        cameraManager.delegate = self // カメラフレームのデリゲートをViewController(captureOutput)に設定
     }
 }
 
@@ -136,7 +137,7 @@ extension ViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
                 return
             }
             
-            // VNRecognizedObjectObservation を Detection に変換
+            // VNRecognizedObjectObservation(observations) を Detection にcompactMapを使用して変換
             let detections: [Detection] = observations.compactMap { observation in
                 guard let label = observation.labels.first else {
                     print("Observation \(observation) にラベルが見つかりません")
