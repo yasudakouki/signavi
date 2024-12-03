@@ -23,6 +23,7 @@
 		ED62169E2CFC2CE20074162D /* ObjectDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED62169D2CFC2CDA0074162D /* ObjectDetector.swift */; };
 		ED6216A02CFC32C30074162D /* DetectionDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED62169F2CFC32B50074162D /* DetectionDrawer.swift */; };
 		ED6216A22CFC47D30074162D /* Dtection.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6216A12CFC47D00074162D /* Dtection.swift */; };
+		EDC8DBE52CFEE59500366B41 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = EDC8DBE42CFEE58E00366B41 /* README.md */; };
 		EDEA53332CFDFEE80054A58D /* yolo11n.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = EDEA53322CFDFEE80054A58D /* yolo11n.mlpackage */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +65,7 @@
 		ED62169D2CFC2CDA0074162D /* ObjectDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectDetector.swift; sourceTree = "<group>"; };
 		ED62169F2CFC32B50074162D /* DetectionDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectionDrawer.swift; sourceTree = "<group>"; };
 		ED6216A12CFC47D00074162D /* Dtection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dtection.swift; sourceTree = "<group>"; };
+		EDC8DBE42CFEE58E00366B41 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		EDEA53322CFDFEE80054A58D /* yolo11n.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = yolo11n.mlpackage; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -115,6 +117,7 @@
 		391DA6702CF5B0A4007DF9C8 /* signavi_app */ = {
 			isa = PBXGroup;
 			children = (
+				EDC8DBE42CFEE58E00366B41 /* README.md */,
 				39A8131A2CF788D3004356E5 /* yolo11m_speed_limit_40.mlpackage */,
 				39A813142CF62FD4004356E5 /* best_640.mlpackage */,
 				EDEA53322CFDFEE80054A58D /* yolo11n.mlpackage */,
@@ -256,6 +259,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDC8DBE52CFEE59500366B41 /* README.md in Resources */,
 				39A8130B2CF62816004356E5 /* LaunchScreen.storyboard in Resources */,
 				391DA6762CF5B0A6007DF9C8 /* Assets.xcassets in Resources */,
 				39A813092CF6280E004356E5 /* Main.storyboard in Resources */,
