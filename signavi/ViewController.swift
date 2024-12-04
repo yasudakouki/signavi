@@ -18,9 +18,7 @@ class ViewController: UIViewController {
     private let cameraManager = CameraManager()
     
     // CoreMLモデルを使用した物体検知を行うクラス（ObjectDetector.swift）
-//    private let objectDetector = ObjectDetector(modelName: "best_640")
-//    private let objectDetector = ObjectDetector(modelName: "yolo11n")
-    private let objectDetector = ObjectDetector(modelName: "yolo11m_speed_limit_40")
+    private let objectDetector = ObjectDetector(modelName: "yolov8n")
     /*
      注意:
         - modelNameの "" はプロジェクト内の .mlmodelc ファイルの名前に置き換えてください
@@ -112,12 +110,6 @@ extension ViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
             - connection: 出力元との接続情報。
          */
         
-        // フレームスキップ処理
-        frameCounter += 1
-        if frameCounter % frameSkipInterval != 0 {
-            return // このフレームはスキップ
-        }
-        frameCounter = 0 // カウンターをリセット
 
         // カメラフレームのピクセルデータを取得
         guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {
@@ -126,45 +118,34 @@ extension ViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
         }
 
         // 非同期で物体検知を実行（ObjectDetectorを使用）
-        objectDetector.performDetection(on: pixelBuffer) { [weak self] observations in
-            /*
-             performDetectionの結果:
-                - detections: 検知結果（ラベル、信頼度、バウンディングボックス）。
-                - self: クロージャ内でViewControllerのインスタンスを保持。
-             */
-
-            // ViewControllerが解放されている場合は処理を終了
-            guard let self = self else { return }
-
+        // 同期的に物体検知を実行
+        guard let observations = objectDetector.performDetection(on: pixelBuffer) else {
+            print("No detections in this frame")
             DispatchQueue.main.async {
-                if let observations = observations, !observations.isEmpty {
-                    /*
-                     - 推論結果がある場合: 検知結果を `Detection` 型に変換して描画。
-                    */
-                    let detections: [Detection] = observations.compactMap { observation in
-                        guard let label = observation.labels.first else {
-                            print("Observation \(observation) にラベルが見つかりません")
-                            return nil
-                        }
-                        return Detection(
-                            box: observation.boundingBox,
-                            confidence: label.confidence,
-                            label: label.identifier,
-                            color: .red
-                        )
-                    }
-
-                    // 検知結果を描画（DetectionDrawerを使用）
-                    let renderedImage = self.detectionDrawer.render(detections: detections, on: pixelBuffer)
-                    self.overlayView.image = renderedImage // 描画結果をオーバーレイビューに設定
-                } else {
-                    /*
-                     - 推論結果が`nil`または空の場合: オーバーレイビューをクリア。
-                    */
-                    print("No detections in this frame")
-                    self.overlayView.image = nil
-                }
+                self.overlayView.image = nil // オーバーレイビューをクリア
             }
+            return
+        }
+
+        // 推論結果を `Detection` 型に変換
+        let detections: [Detection] = observations.compactMap { observation in
+            guard let label = observation.labels.first else {
+                print("Observation \(observation) にラベルが見つかりません")
+                return nil
+            }
+            return Detection(
+                box: observation.boundingBox,
+                confidence: label.confidence,
+                label: label.identifier,
+                color: .red
+            )
+        }
+
+        // 検知結果を描画（DetectionDrawerを使用）
+        DispatchQueue.main.async {
+            let renderedImage = self.detectionDrawer.render(detections: detections, on: pixelBuffer)
+            self.overlayView.image = renderedImage // 描画結果をオーバーレイビューに設定
         }
     }
 }
+

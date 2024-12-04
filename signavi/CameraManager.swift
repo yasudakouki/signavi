@@ -21,7 +21,7 @@ class CameraManager: NSObject {
     private var captureSession: AVCaptureSession?  // カメラの映像や音声入力を管理するセッション
     private let videoOutput = AVCaptureVideoDataOutput()  // 映像フレームを出力するオブジェクト（フレーム処理を担当）
     private let videoQueue = DispatchQueue(label: "camera.queue")  // フレーム処理を非同期で実行するためのバックグラウンドキュー（並列処理を行うためのキュー）
-    private var desiredFrameRate: Int = 30  // フレームレート（デフォルトは30FPS）
+    private var desiredFrameRate: Int = 15  // フレームレート設定
 
     // フレームデータを受け取るデリゲートプロパティ
     var delegate: AVCaptureVideoDataOutputSampleBufferDelegate?  // フレームごとの処理を担当するオブジェクト
@@ -64,6 +64,22 @@ class CameraManager: NSObject {
         
         captureSession?.commitConfiguration()  // セッション設定を確定
         
+
+        
+        // プレビュー用のレイヤーを設定（画面にカメラ映像を表示する準備）
+        let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession!)
+        previewLayer.videoGravity = .resizeAspectFill  // 映像を画面全体にフィットさせる
+        
+//        // セッションを開始（映像データの取得とプレビューの開始）
+//        captureSession?.startRunning()
+        // セッション開始をバックグラウンドスレッドで実行(紫の警告回避)
+        DispatchQueue.global(qos: .userInitiated).async {
+            self.captureSession?.startRunning()
+        }
+        
+        
+        
+        
         // フレームレートの設定
         do {
             // カメラデバイスをロックして設定変更を可能にする
@@ -81,46 +97,7 @@ class CameraManager: NSObject {
             print("Error: フレームレート設定に失敗しました: \(error)")
         }
         
-        // プレビュー用のレイヤーを設定（画面にカメラ映像を表示する準備）
-        let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession!)
-        previewLayer.videoGravity = .resizeAspectFill  // 映像を画面全体にフィットさせる
-        
-//        // セッションを開始（映像データの取得とプレビューの開始）
-//        captureSession?.startRunning()
-        // セッション開始をバックグラウンドスレッドで実行(紫の警告回避)
-        DispatchQueue.global(qos: .userInitiated).async {
-            self.captureSession?.startRunning()
-        }
-        
+        //viewcontrollerにて使うからそれ用のreturnかな？
         return previewLayer  // プレビュー表示用のレイヤーを返す
-    }
-
-    // フレームレートを変更する関数
-    func setFrameRate(to frameRate: Int) {
-        /*
-         役割:
-            - カメラのフレームレートを動的に変更する
-         引数:
-            - frameRate: 設定したいフレームレート（例: 30, 60）
-         使用タイミング:
-            - フレームレートを動的に切り替える必要がある場合
-        */
-        desiredFrameRate = frameRate  // 新しいフレームレートを設定
-        guard let device = AVCaptureDevice.default(for: .video) else { return }
-        do {
-            // 設定変更のためにカメラデバイスをロック
-            try device.lockForConfiguration()
-            
-            // 最小および最大フレーム間隔を新しいフレームレートで設定
-            device.activeVideoMinFrameDuration = CMTime(value: 1, timescale: Int32(frameRate))
-            device.activeVideoMaxFrameDuration = CMTime(value: 1, timescale: Int32(frameRate))
-            
-            // 設定後にロックを解除
-            device.unlockForConfiguration()
-            print("Frame rate updated to \(frameRate) FPS")
-        } catch {
-            // エラーハンドリング（設定変更失敗時）
-            print("Error: フレームレートの変更に失敗しました: \(error)")
-        }
     }
 }

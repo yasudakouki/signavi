@@ -12,7 +12,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     */
     
     
-    func application(_ application: UIApplication, didFinishLanchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         /*
          役割
             アプリの起動時に一度だけ呼ばれる

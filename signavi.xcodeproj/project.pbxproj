@@ -14,6 +14,7 @@
 		391DA69E2CF5B155007DF9C8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391DA69D2CF5B155007DF9C8 /* SceneDelegate.swift */; };
 		391DA6A02CF5B15B007DF9C8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391DA69F2CF5B15B007DF9C8 /* ViewController.swift */; };
 		391DA6A22CF5B1D9007DF9C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391DA6A12CF5B1D9007DF9C8 /* AppDelegate.swift */; };
+		394176E32CFFD9B70006F62D /* yolov8n.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 394176E22CFFD9B70006F62D /* yolov8n.mlpackage */; };
 		39A813092CF6280E004356E5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39A813082CF6280E004356E5 /* Main.storyboard */; };
 		39A8130B2CF62816004356E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39A8130A2CF62816004356E5 /* LaunchScreen.storyboard */; };
 		39A813152CF62FD4004356E5 /* best_640.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 39A813142CF62FD4004356E5 /* best_640.mlpackage */; };
@@ -54,6 +55,7 @@
 		391DA69D2CF5B155007DF9C8 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		391DA69F2CF5B15B007DF9C8 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		391DA6A12CF5B1D9007DF9C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		394176E22CFFD9B70006F62D /* yolov8n.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = yolov8n.mlpackage; sourceTree = "<group>"; };
 		39A813042CF624BA004356E5 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		39A813082CF6280E004356E5 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		39A8130A2CF62816004356E5 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -118,11 +120,12 @@
 				39A8131A2CF788D3004356E5 /* yolo11m_speed_limit_40.mlpackage */,
 				39A813142CF62FD4004356E5 /* best_640.mlpackage */,
 				EDEA53322CFDFEE80054A58D /* yolo11n.mlpackage */,
+				394176E22CFFD9B70006F62D /* yolov8n.mlpackage */,
 				39A813042CF624BA004356E5 /* Info.plist */,
 				391DA6A12CF5B1D9007DF9C8 /* AppDelegate.swift */,
 				391DA69D2CF5B155007DF9C8 /* SceneDelegate.swift */,
-				391DA69F2CF5B15B007DF9C8 /* ViewController.swift */,
 				ED62169B2CFBE9A10074162D /* CameraManager.swift */,
+				391DA69F2CF5B15B007DF9C8 /* ViewController.swift */,
 				ED62169D2CFC2CDA0074162D /* ObjectDetector.swift */,
 				ED62169F2CFC32B50074162D /* DetectionDrawer.swift */,
 				39A813162CF6300D004356E5 /* soundplayer.swift */,
@@ -215,7 +218,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1540;
-				LastUpgradeCheck = 1540;
+				LastUpgradeCheck = 1610;
 				TargetAttributes = {
 					391DA66D2CF5B0A4007DF9C8 = {
 						CreatedOnToolsVersion = 15.4;
@@ -290,6 +293,7 @@
 				ED62169C2CFBE9AE0074162D /* CameraManager.swift in Sources */,
 				39A813152CF62FD4004356E5 /* best_640.mlpackage in Sources */,
 				39A813172CF6300D004356E5 /* soundplayer.swift in Sources */,
+				394176E32CFFD9B70006F62D /* yolov8n.mlpackage in Sources */,
 				391DA6A02CF5B15B007DF9C8 /* ViewController.swift in Sources */,
 				EDEA53332CFDFEE80054A58D /* yolo11n.mlpackage in Sources */,
 				391DA6A22CF5B1D9007DF9C8 /* AppDelegate.swift in Sources */,
@@ -335,6 +339,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -398,6 +403,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -457,7 +463,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = N4BWGU3NP7;
+				DEVELOPMENT_TEAM = MC7CLNYXK7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = signavi/Info.plist;
@@ -489,7 +495,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = N4BWGU3NP7;
+				DEVELOPMENT_TEAM = MC7CLNYXK7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = signavi/Info.plist;
@@ -516,7 +522,6 @@
 		391DA6962CF5B0A7007DF9C8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -536,7 +541,6 @@
 		391DA6972CF5B0A7007DF9C8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -556,7 +560,6 @@
 		391DA6992CF5B0A7007DF9C8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = MC7CLNYXK7;
@@ -574,7 +577,6 @@
 		391DA69A2CF5B0A7007DF9C8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = MC7CLNYXK7;
