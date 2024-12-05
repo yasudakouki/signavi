@@ -15,12 +15,22 @@ class CameraManager {
         do {
             let deviceInput = try AVCaptureDeviceInput(device: device)
             captureSession.beginConfiguration()
-            captureSession.addInput(deviceInput)
+            if captureSession.canAddInput(deviceInput) {
+                captureSession.addInput(deviceInput)
+            } else {
+                print("Error: Cannot add device input to session")
+                return nil
+            }
             
             videoOutput = AVCaptureVideoDataOutput()
             let queue = DispatchQueue(label: "VideoQueue")
             videoOutput.setSampleBufferDelegate(delegate, queue: queue)
-            captureSession.addOutput(videoOutput)
+            if captureSession.canAddOutput(videoOutput) {
+                captureSession.addOutput(videoOutput)
+            } else {
+                print("Error: Cannot add video output to session")
+                return nil
+            }
             
             if let videoConnection = videoOutput.connection(with: .video) {
                 if videoConnection.isVideoOrientationSupported {
@@ -32,7 +42,10 @@ class CameraManager {
             previewLayer.videoGravity = .resizeAspectFill
             
             captureSession.commitConfiguration()
-            captureSession.startRunning()
+            
+            DispatchQueue.global(qos: .userInitiated).async {
+                self.captureSession.startRunning()
+            }
             
             try device.lockForConfiguration()
             device.activeVideoMinFrameDuration = CMTime(value: 1, timescale: Int32(desiredFrameRate))
