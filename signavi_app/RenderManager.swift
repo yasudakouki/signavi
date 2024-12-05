@@ -1,60 +1,66 @@
 import UIKit
-import Vision
+import CoreGraphics
+import CoreImage
 
 class RenderManager {
-    private let ciContext = CIContext()
     
-    func drawDetections(_ observations: [VNRecognizedObjectObservation], on pixelBuffer: CVPixelBuffer) -> UIImage? {
-        // ピクセルバッファを CIImage に変換
-        let ciImage = CIImage(cvPixelBuffer: pixelBuffer)
-        guard let cgImage = ciContext.createCGImage(ciImage, from: ciImage.extent) else { return nil }
-        let imageSize = ciImage.extent.size
-        
-        // 描画用の CGContext 作成
-        guard let context = CGContext(data: nil,
-                                       width: Int(imageSize.width),
-                                       height: Int(imageSize.height),
-                                       bitsPerComponent: 8,
-                                       bytesPerRow: 4 * Int(imageSize.width),
-                                       space: CGColorSpaceCreateDeviceRGB(),
-                                       bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue) else {
-            return nil
+    // CIContextを初期化
+    private let ciContext = CIContext()
+
+    // 検出結果を画面に描画する関数
+    func render(detections: [Detection], pixelBuffer: CVPixelBuffer, onView view: UIView) {
+        // 以前の描画を消去
+        view.layer.sublayers?.forEach { $0.removeFromSuperlayer() }
+
+        // 描画を行う画像を生成
+        if let drawImage = self.drawRectsOnImage(detections, pixelBuffer) {
+            // 画像をビューに更新
+            let imageView = UIImageView(image: drawImage)
+            imageView.frame = view.bounds
+            view.addSubview(imageView)
         }
+    }
+
+    // バウンディングボックスを描画する関数
+    func drawRectsOnImage(_ detections: [Detection], _ pixelBuffer: CVPixelBuffer) -> UIImage? {
+        // CIImageに変換
+        let ciImage = CIImage(cvPixelBuffer: pixelBuffer)
         
-        // 元画像を描画
-        context.draw(cgImage, in: CGRect(origin: .zero, size: imageSize))
+        // CIContextを使ってCGImageを作成
+        guard let cgImage = ciContext.createCGImage(ciImage, from: ciImage.extent) else { return nil }
         
-        // 検知結果を描画
-        for observation in observations {
-            // 座標変換 (正規化座標 -> ピクセル座標)
-            let boundingBox = observation.boundingBox
-            let rect = CGRect(
-                x: boundingBox.minX * imageSize.width,
-                y: (1 - boundingBox.maxY) * imageSize.height,
-                width: boundingBox.width * imageSize.width,
-                height: boundingBox.height * imageSize.height
+        let size = ciImage.extent.size
+        
+        // CGContextを作成して描画準備
+        guard let cgContext = CGContext(data: nil,
+                                        width: Int(size.width),
+                                        height: Int(size.height),
+                                        bitsPerComponent: 8,
+                                        bytesPerRow: 4 * Int(size.width),
+                                        space: CGColorSpaceCreateDeviceRGB(),
+                                        bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue) else { return nil }
+        
+        // 元の画像を描画
+        cgContext.draw(cgImage, in: CGRect(origin: .zero, size: size))
+        
+        // 検出結果の矩形を描画
+        for detection in detections {
+            let invertedBox = CGRect(
+                x: detection.box.minX,
+                y: size.height - detection.box.maxY, // Y軸反転
+                width: detection.box.width,
+                height: detection.box.height
             )
             
-            // 矩形の描画
-            context.setLineWidth(3.0)
-            context.setStrokeColor(UIColor.red.cgColor)
-            context.stroke(rect)
+            cgContext.setStrokeColor(detection.color.cgColor)
+            cgContext.setLineWidth(2) // 四角形の線の太さ
             
-            // ラベルの描画
-            if let label = observation.labels.first {
-                let labelText = "\(label.identifier) (\(Int(label.confidence * 100))%)"
-                let textAttributes: [NSAttributedString.Key: Any] = [
-                    .font: UIFont.systemFont(ofSize: 12),
-                    .foregroundColor: UIColor.red
-                ]
-                let textPosition = CGPoint(x: rect.minX, y: rect.minY - 20)
-                let attributedText = NSAttributedString(string: labelText, attributes: textAttributes)
-                attributedText.draw(at: textPosition)
-            }
+            // バウンディングボックスを描画
+            cgContext.stroke(invertedBox)
         }
         
-        // 新しい画像を取得
-        guard let newImage = context.makeImage() else { return nil }
-        return UIImage(cgImage: newImage)
+        // 描画した画像を作成して返す
+        guard let newImage = cgContext.makeImage() else { return nil }
+        return UIImage(ciImage: CIImage(cgImage: newImage))
     }
 }

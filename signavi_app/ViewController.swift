@@ -6,6 +6,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     var previewView = UIImageView() // カメラ映像表示用ビュー
     var cameraManager = CameraManager() // CameraManagerを利用
     
+    var renderManager = RenderManager() //描写用
     //モデルの読み込みのinitや検知のdetectionを呼び出す
     private var detectionManager: DetectionManager!
     
@@ -61,7 +62,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         print("Frame get")
         // 物体検出を実行
         let detections = detectionManager.detectObjects(pixelBuffer: pixelBuffer)
-        
+         
         // 検出結果をコンソールに表示
         for detection in detections {
             print("Detected object: \(detection.label ?? "Unknown")")
@@ -70,7 +71,13 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         }
         
         
-        
+        DispatchQueue.main.async {
+            
+            self.renderManager.render(detections: detections, pixelBuffer: pixelBuffer, onView: self.view)
+            
+        }
+
+        //self.renderManager.render(detections: detections, onView: self.view)
         
         
         
