@@ -1,42 +1,63 @@
 import UIKit
-import AVFoundation
 import Vision
-import Foundation
+import CoreML
 
 class DetectionManager {
     private var yoloRequest: VNCoreMLRequest!
     private var classes: [String] = []
+    private var videoSize: CGSize
 
-    init() {
+    /// 初期化: CoreMLモデルの読み込み
+    init(videoSize: CGSize) {
+        self.videoSize = videoSize
+
         do {
-            // CoreMLモデルの読み込み
+            // モデルを指定して読み込む
             let model = try yolo11m_speed_limit_40().model
-            guard let classLabels = model.modelDescription.classLabels as? [String] else {
-                fatalError("Failed to load class labels")
-            }
-            self.classes = classLabels
-            
-            // Vision用のCoreMLモデルに変換
             let vnModel = try VNCoreMLModel(for: model)
-            yoloRequest = VNCoreMLRequest(model: vnModel)
+            self.yoloRequest = VNCoreMLRequest(model: vnModel)
+
+            // クラス名の取得
+            if let classLabels = model.modelDescription.classLabels as? [String] {
+                self.classes = classLabels
+            }
         } catch {
-            fatalError("Failed to load CoreML model: \(error)")
+            fatalError("Failed to initialize DetectionManager: \(error)")
         }
     }
-    
-    /// 画像中の物体を同期的に検出する
-    func detectObjects(pixelBuffer: CVPixelBuffer) -> [VNRecognizedObjectObservation] {
-        let handler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer, options: [:])
-        
+
+    /// 物体検知を実行し、結果を返す
+    func detectObjects(pixelBuffer: CVPixelBuffer) -> [Detection] {
         do {
-            try handler.perform([self.yoloRequest])
-            if let results = self.yoloRequest.results as? [VNRecognizedObjectObservation] {
-                return results
-            } else {
+            // Visionのリクエストハンドラーを作成
+            let handler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer, options: [:])
+            try handler.perform([yoloRequest])
+            
+            guard let results = yoloRequest.results as? [VNRecognizedObjectObservation] else {
                 return []
             }
+
+            var detections: [Detection] = []
+            for result in results {
+                // バウンディングボックスの位置調整
+                let flippedBox = CGRect(
+                    x: result.boundingBox.minX,
+                    y: 1 - result.boundingBox.maxY,
+                    width: result.boundingBox.width,
+                    height: result.boundingBox.height
+                )
+                let box = VNImageRectForNormalizedRect(flippedBox, Int(videoSize.width), Int(videoSize.height))
+
+                // ラベル取得とDetectionオブジェクト生成
+                if let label = result.labels.first?.identifier {
+                    let detection = Detection(box: box, confidence: result.confidence, label: label, color:UIColor.red)
+                    detections.append(detection)
+                }
+            }
+
+            return detections
         } catch {
-            print("Failed to perform detection: \(error)")
+            print("Detection error: \(error)")
             return []
         }
     }
