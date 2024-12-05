@@ -6,6 +6,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     var previewView = UIImageView() // カメラ映像表示用ビュー
     var cameraManager = CameraManager() // CameraManagerを利用
     
+    var videoSize = CGSize.zero
+    
     var renderManager = RenderManager() //描写用
     //モデルの読み込みのinitや検知のdetectionを呼び出す
     private var detectionManager: DetectionManager!
@@ -15,6 +17,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Setting up camera...")
+        
+        
         
         
         let screenSize = UIScreen.main.bounds.size
@@ -56,12 +60,24 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     
     // AVCaptureVideoDataOutputSampleBufferDelegateのメソッド
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+        
+        
+        if videoSize == CGSize.zero {
+            guard let width = sampleBuffer.formatDescription?.dimensions.width,
+                  let height = sampleBuffer.formatDescription?.dimensions.height else {
+                fatalError()
+            }
+            videoSize = CGSize(width: CGFloat(width), height: CGFloat(height))
+        }
+        
+        
+        
         guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
         
         
         print("Frame get")
         // 物体検出を実行
-        let detections = detectionManager.detectObjects(pixelBuffer: pixelBuffer)
+        let detections = detectionManager.detectObjects(pixelBuffer: pixelBuffer, videoSize: videoSize)
          
         // 検出結果をコンソールに表示
         for detection in detections {
@@ -73,7 +89,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         
         DispatchQueue.main.async {
             
-            self.renderManager.render(detections: detections, pixelBuffer: pixelBuffer, onView: self.view)
+            self.renderManager.render(detections: detections, pixelBuffer: pixelBuffer, onView: self.view,videoSize: self.videoSize)
             
         }
 

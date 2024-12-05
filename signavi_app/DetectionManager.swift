@@ -6,14 +6,13 @@ class DetectionManager {
     private var yoloRequest: VNCoreMLRequest!
     private var classes: [String] = []
     private var videoSize: CGSize
-
     /// 初期化: CoreMLモデルの読み込み
     init(videoSize: CGSize) {
         self.videoSize = videoSize
 
         do {
             // モデルを指定して読み込む
-            let model = try yolo11m_speed_limit_40().model
+            let model = try yolov8n().model
             let vnModel = try VNCoreMLModel(for: model)
             self.yoloRequest = VNCoreMLRequest(model: vnModel)
 
@@ -27,7 +26,7 @@ class DetectionManager {
     }
 
     /// 物体検知を実行し、結果を返す
-    func detectObjects(pixelBuffer: CVPixelBuffer) -> [Detection] {
+    func detectObjects(pixelBuffer: CVPixelBuffer , videoSize: CGSize) -> [Detection] {
         do {
             // Visionのリクエストハンドラーを作成
             let handler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer, options: [:])
@@ -46,6 +45,8 @@ class DetectionManager {
                     width: result.boundingBox.width,
                     height: result.boundingBox.height
                 )
+                print("detectionによる呼び出し\(videoSize.width), \(videoSize.height)")
+                //let box = VNImageRectForNormalizedRect(flippedBox, Int(1080), Int(1920))
                 let box = VNImageRectForNormalizedRect(flippedBox, Int(videoSize.width), Int(videoSize.height))
 
                 // ラベル取得とDetectionオブジェクト生成

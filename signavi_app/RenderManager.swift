@@ -6,14 +6,15 @@ class RenderManager {
     
     // CIContextを初期化
     private let ciContext = CIContext()
+    
 
     // 検出結果を画面に描画する関数
-    func render(detections: [Detection], pixelBuffer: CVPixelBuffer, onView view: UIView) {
+    func render(detections: [Detection], pixelBuffer: CVPixelBuffer, onView view: UIView,videoSize: CGSize) {
         // 以前の描画を消去
         view.layer.sublayers?.forEach { $0.removeFromSuperlayer() }
 
         // 描画を行う画像を生成
-        if let drawImage = self.drawRectsOnImage(detections, pixelBuffer) {
+        if let drawImage = self.drawRectsOnImage(detections, pixelBuffer,videoSize: videoSize) {
             // 画像をビューに更新
             let imageView = UIImageView(image: drawImage)
             imageView.frame = view.bounds
@@ -22,7 +23,7 @@ class RenderManager {
     }
 
     // バウンディングボックスを描画する関数
-    func drawRectsOnImage(_ detections: [Detection], _ pixelBuffer: CVPixelBuffer) -> UIImage? {
+    func drawRectsOnImage(_ detections: [Detection], _ pixelBuffer: CVPixelBuffer,videoSize: CGSize) -> UIImage? {
         // CIImageに変換
         let ciImage = CIImage(cvPixelBuffer: pixelBuffer)
         
@@ -31,12 +32,14 @@ class RenderManager {
         
         let size = ciImage.extent.size
         
+        print("renderによる呼び出し\(videoSize.width), \(videoSize.height)")
+        
         // CGContextを作成して描画準備
         guard let cgContext = CGContext(data: nil,
-                                        width: Int(size.width),
-                                        height: Int(size.height),
+                                        width: Int(1080),
+                                        height: Int(1920),
                                         bitsPerComponent: 8,
-                                        bytesPerRow: 4 * Int(size.width),
+                                        bytesPerRow: 4 * Int(1080),
                                         space: CGColorSpaceCreateDeviceRGB(),
                                         bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue) else { return nil }
         
@@ -45,12 +48,7 @@ class RenderManager {
         
         // 検出結果の矩形を描画
         for detection in detections {
-            let invertedBox = CGRect(
-                x: detection.box.minX,
-                y: size.height - detection.box.maxY, // Y軸反転
-                width: detection.box.width,
-                height: detection.box.height
-            )
+            let invertedBox = CGRect(x: detection.box.minX, y: size.height - detection.box.maxY, width: detection.box.width, height: detection.box.height)
             
             cgContext.setStrokeColor(detection.color.cgColor)
             cgContext.setLineWidth(2) // 四角形の線の太さ
