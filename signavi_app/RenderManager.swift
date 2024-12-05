@@ -9,17 +9,14 @@ class RenderManager {
     
 
     // 検出結果を画面に描画する関数
-    func render(detections: [Detection], pixelBuffer: CVPixelBuffer, onView view: UIView,videoSize: CGSize) {
+    func render(detections: [Detection], pixelBuffer: CVPixelBuffer, onView view: UIView,videoSize: CGSize) -> UIImage {
         // 以前の描画を消去
-        view.layer.sublayers?.forEach { $0.removeFromSuperlayer() }
+        //view.layer.sublayers?.forEach { $0.removeFromSuperlayer() }
+        //view.subviews.forEach { $0.removeFromSuperview() }
 
-        // 描画を行う画像を生成
-        if let drawImage = self.drawRectsOnImage(detections, pixelBuffer,videoSize: videoSize) {
-            // 画像をビューに更新
-            let imageView = UIImageView(image: drawImage)
-            imageView.frame = view.bounds
-            view.addSubview(imageView)
-        }
+        let drawImage = self.drawRectsOnImage(detections, pixelBuffer, videoSize: videoSize)!
+        
+        return drawImage
     }
 
     // バウンディングボックスを描画する関数
