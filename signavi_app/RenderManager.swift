@@ -33,10 +33,10 @@ class RenderManager {
         
         // CGContextを作成して描画準備
         guard let cgContext = CGContext(data: nil,
-                                        width: Int(1080),
-                                        height: Int(1920),
+                                        width: Int(videoSize.width),//width: Int(1080)
+                                        height: Int(videoSize.height),//height: Int(1920)
                                         bitsPerComponent: 8,
-                                        bytesPerRow: 4 * Int(1080),
+                                        bytesPerRow: 4 * Int(videoSize.width),//bytesPerRow: 4 * Int(1080),
                                         space: CGColorSpaceCreateDeviceRGB(),
                                         bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue) else { return nil }
         

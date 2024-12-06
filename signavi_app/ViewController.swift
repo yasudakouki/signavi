@@ -8,6 +8,12 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     
     var videoSize = CGSize.zero
     
+    //時間の計測を確認するため
+    var now: Date!
+    var after_calc_time = 0
+    var before_calc_time = 0
+    var calc_time = 0
+    
     var renderManager = RenderManager() //描写用
     //モデルの読み込みのinitや検知のdetectionを呼び出す
     private var detectionManager: DetectionManager!
@@ -17,6 +23,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Setting up camera...")
+        now = Date()
         
         
         
@@ -60,6 +67,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     
     // AVCaptureVideoDataOutputSampleBufferDelegateのメソッド
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+        //演算時間の計算に使用
+        before_calc_time = Int(Date().timeIntervalSince(now) * 1000)
         
         
         if videoSize == CGSize.zero {
@@ -86,13 +95,25 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             print("Confidence: \(detection.confidence)")
         }
         
+        //推定時間を計算してラベルに反映
+        
+        
+        
+        
+        
         
         DispatchQueue.main.async {
             
             self.previewView.image=self.renderManager.render(detections: detections, pixelBuffer: pixelBuffer, onView: self.view,videoSize: self.videoSize)
-            
+            self.after_calc_time = Int(Date().timeIntervalSince(self.now) * 1000)
+            self.calc_time = self.after_calc_time - self.before_calc_time
+            self.estimate_cals_time.text="estimate:\(self.calc_time)ms"
+            print("estimate:\(self.calc_time)")
         }
          
+        
+
+        
 
         
         
