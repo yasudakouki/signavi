@@ -1,6 +1,6 @@
 import XCTest
 
-final class Yolov8_RealTime_iOSUITestsLaunchTests: XCTestCase {
+final class signaviUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true

@@ -12,7 +12,7 @@ class DetectionManager {
 
         do {
             // モデルを指定して読み込む
-            let model = try yolov8n().model
+            let model = try yolo11m_speed_limit_40().model
             let vnModel = try VNCoreMLModel(for: model)
             self.yoloRequest = VNCoreMLRequest(model: vnModel)
 

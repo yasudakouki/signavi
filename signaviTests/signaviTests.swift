@@ -1,8 +1,8 @@
 
 import XCTest
-@testable import Yolov8_RealTime_iOS
+@testable import signavi
 
-final class Yolov8_RealTime_iOSTests: XCTestCase {
+final class signaviTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

@@ -16,9 +16,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "391DA66D2CF5B0A4007DF9C8"
-               BuildableName = "signavi_app.app"
-               BlueprintName = "signavi_app"
-               ReferencedContainer = "container:signavi_app.xcodeproj">
+               BuildableName = "signaviapp.app"
+               BlueprintName = "signaviapp"
+               ReferencedContainer = "container:signavi.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -36,9 +36,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "391DA67D2CF5B0A7007DF9C8"
-               BuildableName = "signavi_appTests.xctest"
-               BlueprintName = "signavi_appTests"
-               ReferencedContainer = "container:signavi_app.xcodeproj">
+               BuildableName = "signaviappTests.xctest"
+               BlueprintName = "signaviappTests"
+               ReferencedContainer = "container:signavi.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -47,9 +47,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "391DA6872CF5B0A7007DF9C8"
-               BuildableName = "signavi_appUITests.xctest"
-               BlueprintName = "signavi_appUITests"
-               ReferencedContainer = "container:signavi_app.xcodeproj">
+               BuildableName = "signaviappUITests.xctest"
+               BlueprintName = "signaviappUITests"
+               ReferencedContainer = "container:signavi.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -69,9 +69,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "391DA66D2CF5B0A4007DF9C8"
-            BuildableName = "signavi_app.app"
-            BlueprintName = "signavi_app"
-            ReferencedContainer = "container:signavi_app.xcodeproj">
+            BuildableName = "signaviapp.app"
+            BlueprintName = "signaviapp"
+            ReferencedContainer = "container:signavi.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <EnvironmentVariables>
@@ -93,9 +93,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "391DA66D2CF5B0A4007DF9C8"
-            BuildableName = "signavi_app.app"
-            BlueprintName = "signavi_app"
-            ReferencedContainer = "container:signavi_app.xcodeproj">
+            BuildableName = "signaviapp.app"
+            BlueprintName = "signaviapp"
+            ReferencedContainer = "container:signavi.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

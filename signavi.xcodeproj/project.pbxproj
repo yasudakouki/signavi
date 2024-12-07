@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		391DA6762CF5B0A6007DF9C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 391DA6752CF5B0A6007DF9C8 /* Assets.xcassets */; };
-		391DA6832CF5B0A7007DF9C8 /* signavi_appTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391DA6822CF5B0A7007DF9C8 /* signavi_appTests.swift */; };
-		391DA68D2CF5B0A7007DF9C8 /* signavi_appUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391DA68C2CF5B0A7007DF9C8 /* signavi_appUITests.swift */; };
-		391DA68F2CF5B0A7007DF9C8 /* signavi_appUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391DA68E2CF5B0A7007DF9C8 /* signavi_appUITestsLaunchTests.swift */; };
+		391DA6832CF5B0A7007DF9C8 /* signaviTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391DA6822CF5B0A7007DF9C8 /* signaviTests.swift */; };
+		391DA68D2CF5B0A7007DF9C8 /* signaviUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391DA68C2CF5B0A7007DF9C8 /* signaviUITests.swift */; };
+		391DA68F2CF5B0A7007DF9C8 /* signaviUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391DA68E2CF5B0A7007DF9C8 /* signaviUITestsLaunchTests.swift */; };
 		391DA69E2CF5B155007DF9C8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391DA69D2CF5B155007DF9C8 /* SceneDelegate.swift */; };
 		391DA6A02CF5B15B007DF9C8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391DA69F2CF5B15B007DF9C8 /* ViewController.swift */; };
 		391DA6A22CF5B1D9007DF9C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391DA6A12CF5B1D9007DF9C8 /* AppDelegate.swift */; };
@@ -33,25 +33,25 @@
 			containerPortal = 391DA6662CF5B0A4007DF9C8 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 391DA66D2CF5B0A4007DF9C8;
-			remoteInfo = signavi_app;
+			remoteInfo = signavi;
 		};
 		391DA6892CF5B0A7007DF9C8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 391DA6662CF5B0A4007DF9C8 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 391DA66D2CF5B0A4007DF9C8;
-			remoteInfo = signavi_app;
+			remoteInfo = signavi;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		391DA66E2CF5B0A4007DF9C8 /* signavi_app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = signavi_app.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		391DA66E2CF5B0A4007DF9C8 /* signaviapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = signaviapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		391DA6752CF5B0A6007DF9C8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		391DA67E2CF5B0A7007DF9C8 /* signavi_appTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = signavi_appTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		391DA6822CF5B0A7007DF9C8 /* signavi_appTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = signavi_appTests.swift; sourceTree = "<group>"; };
-		391DA6882CF5B0A7007DF9C8 /* signavi_appUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = signavi_appUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		391DA68C2CF5B0A7007DF9C8 /* signavi_appUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = signavi_appUITests.swift; sourceTree = "<group>"; };
-		391DA68E2CF5B0A7007DF9C8 /* signavi_appUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = signavi_appUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		391DA67E2CF5B0A7007DF9C8 /* signaviappTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = signaviappTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		391DA6822CF5B0A7007DF9C8 /* signaviTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = signaviTests.swift; sourceTree = "<group>"; };
+		391DA6882CF5B0A7007DF9C8 /* signaviappUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = signaviappUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		391DA68C2CF5B0A7007DF9C8 /* signaviUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = signaviUITests.swift; sourceTree = "<group>"; };
+		391DA68E2CF5B0A7007DF9C8 /* signaviUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = signaviUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		391DA69D2CF5B155007DF9C8 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		391DA69F2CF5B15B007DF9C8 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		391DA6A12CF5B1D9007DF9C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -97,9 +97,9 @@
 		391DA6652CF5B0A4007DF9C8 = {
 			isa = PBXGroup;
 			children = (
-				391DA6702CF5B0A4007DF9C8 /* signavi_app */,
-				391DA6812CF5B0A7007DF9C8 /* signavi_appTests */,
-				391DA68B2CF5B0A7007DF9C8 /* signavi_appUITests */,
+				391DA6702CF5B0A4007DF9C8 /* signavi */,
+				391DA6812CF5B0A7007DF9C8 /* signaviTests */,
+				391DA68B2CF5B0A7007DF9C8 /* signaviUITests */,
 				391DA66F2CF5B0A4007DF9C8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -107,14 +107,14 @@
 		391DA66F2CF5B0A4007DF9C8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				391DA66E2CF5B0A4007DF9C8 /* signavi_app.app */,
-				391DA67E2CF5B0A7007DF9C8 /* signavi_appTests.xctest */,
-				391DA6882CF5B0A7007DF9C8 /* signavi_appUITests.xctest */,
+				391DA66E2CF5B0A4007DF9C8 /* signaviapp.app */,
+				391DA67E2CF5B0A7007DF9C8 /* signaviappTests.xctest */,
+				391DA6882CF5B0A7007DF9C8 /* signaviappUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		391DA6702CF5B0A4007DF9C8 /* signavi_app */ = {
+		391DA6702CF5B0A4007DF9C8 /* signavi */ = {
 			isa = PBXGroup;
 			children = (
 				391DA6A12CF5B1D9007DF9C8 /* AppDelegate.swift */,
@@ -134,32 +134,32 @@
 				39A813082CF6280E004356E5 /* Main.storyboard */,
 				39A8130A2CF62816004356E5 /* LaunchScreen.storyboard */,
 			);
-			path = signavi_app;
+			path = signavi;
 			sourceTree = "<group>";
 		};
-		391DA6812CF5B0A7007DF9C8 /* signavi_appTests */ = {
+		391DA6812CF5B0A7007DF9C8 /* signaviTests */ = {
 			isa = PBXGroup;
 			children = (
-				391DA6822CF5B0A7007DF9C8 /* signavi_appTests.swift */,
+				391DA6822CF5B0A7007DF9C8 /* signaviTests.swift */,
 			);
-			path = signavi_appTests;
+			path = signaviTests;
 			sourceTree = "<group>";
 		};
-		391DA68B2CF5B0A7007DF9C8 /* signavi_appUITests */ = {
+		391DA68B2CF5B0A7007DF9C8 /* signaviUITests */ = {
 			isa = PBXGroup;
 			children = (
-				391DA68C2CF5B0A7007DF9C8 /* signavi_appUITests.swift */,
-				391DA68E2CF5B0A7007DF9C8 /* signavi_appUITestsLaunchTests.swift */,
+				391DA68C2CF5B0A7007DF9C8 /* signaviUITests.swift */,
+				391DA68E2CF5B0A7007DF9C8 /* signaviUITestsLaunchTests.swift */,
 			);
-			path = signavi_appUITests;
+			path = signaviUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		391DA66D2CF5B0A4007DF9C8 /* signavi_app */ = {
+		391DA66D2CF5B0A4007DF9C8 /* signaviapp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 391DA6922CF5B0A7007DF9C8 /* Build configuration list for PBXNativeTarget "signavi_app" */;
+			buildConfigurationList = 391DA6922CF5B0A7007DF9C8 /* Build configuration list for PBXNativeTarget "signaviapp" */;
 			buildPhases = (
 				391DA66A2CF5B0A4007DF9C8 /* Sources */,
 				391DA66B2CF5B0A4007DF9C8 /* Frameworks */,
@@ -169,14 +169,14 @@
 			);
 			dependencies = (
 			);
-			name = signavi_app;
-			productName = signavi_app;
-			productReference = 391DA66E2CF5B0A4007DF9C8 /* signavi_app.app */;
+			name = signaviapp;
+			productName = signavi;
+			productReference = 391DA66E2CF5B0A4007DF9C8 /* signaviapp.app */;
 			productType = "com.apple.product-type.application";
 		};
-		391DA67D2CF5B0A7007DF9C8 /* signavi_appTests */ = {
+		391DA67D2CF5B0A7007DF9C8 /* signaviappTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 391DA6952CF5B0A7007DF9C8 /* Build configuration list for PBXNativeTarget "signavi_appTests" */;
+			buildConfigurationList = 391DA6952CF5B0A7007DF9C8 /* Build configuration list for PBXNativeTarget "signaviappTests" */;
 			buildPhases = (
 				391DA67A2CF5B0A7007DF9C8 /* Sources */,
 				391DA67B2CF5B0A7007DF9C8 /* Frameworks */,
@@ -187,14 +187,14 @@
 			dependencies = (
 				391DA6802CF5B0A7007DF9C8 /* PBXTargetDependency */,
 			);
-			name = signavi_appTests;
-			productName = signavi_appTests;
-			productReference = 391DA67E2CF5B0A7007DF9C8 /* signavi_appTests.xctest */;
+			name = signaviappTests;
+			productName = signaviTests;
+			productReference = 391DA67E2CF5B0A7007DF9C8 /* signaviappTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		391DA6872CF5B0A7007DF9C8 /* signavi_appUITests */ = {
+		391DA6872CF5B0A7007DF9C8 /* signaviappUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 391DA6982CF5B0A7007DF9C8 /* Build configuration list for PBXNativeTarget "signavi_appUITests" */;
+			buildConfigurationList = 391DA6982CF5B0A7007DF9C8 /* Build configuration list for PBXNativeTarget "signaviappUITests" */;
 			buildPhases = (
 				391DA6842CF5B0A7007DF9C8 /* Sources */,
 				391DA6852CF5B0A7007DF9C8 /* Frameworks */,
@@ -205,9 +205,9 @@
 			dependencies = (
 				391DA68A2CF5B0A7007DF9C8 /* PBXTargetDependency */,
 			);
-			name = signavi_appUITests;
-			productName = signavi_appUITests;
-			productReference = 391DA6882CF5B0A7007DF9C8 /* signavi_appUITests.xctest */;
+			name = signaviappUITests;
+			productName = signaviUITests;
+			productReference = 391DA6882CF5B0A7007DF9C8 /* signaviappUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -233,7 +233,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 391DA6692CF5B0A4007DF9C8 /* Build configuration list for PBXProject "signavi_app" */;
+			buildConfigurationList = 391DA6692CF5B0A4007DF9C8 /* Build configuration list for PBXProject "signavi" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -247,9 +247,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				391DA66D2CF5B0A4007DF9C8 /* signavi_app */,
-				391DA67D2CF5B0A7007DF9C8 /* signavi_appTests */,
-				391DA6872CF5B0A7007DF9C8 /* signavi_appUITests */,
+				391DA66D2CF5B0A4007DF9C8 /* signaviapp */,
+				391DA67D2CF5B0A7007DF9C8 /* signaviappTests */,
+				391DA6872CF5B0A7007DF9C8 /* signaviappUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -305,7 +305,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				391DA6832CF5B0A7007DF9C8 /* signavi_appTests.swift in Sources */,
+				391DA6832CF5B0A7007DF9C8 /* signaviTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,8 +313,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				391DA68F2CF5B0A7007DF9C8 /* signavi_appUITestsLaunchTests.swift in Sources */,
-				391DA68D2CF5B0A7007DF9C8 /* signavi_appUITests.swift in Sources */,
+				391DA68F2CF5B0A7007DF9C8 /* signaviUITestsLaunchTests.swift in Sources */,
+				391DA68D2CF5B0A7007DF9C8 /* signaviUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,12 +323,12 @@
 /* Begin PBXTargetDependency section */
 		391DA6802CF5B0A7007DF9C8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 391DA66D2CF5B0A4007DF9C8 /* signavi_app */;
+			target = 391DA66D2CF5B0A4007DF9C8 /* signaviapp */;
 			targetProxy = 391DA67F2CF5B0A7007DF9C8 /* PBXContainerItemProxy */;
 		};
 		391DA68A2CF5B0A7007DF9C8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 391DA66D2CF5B0A4007DF9C8 /* signavi_app */;
+			target = 391DA66D2CF5B0A4007DF9C8 /* signaviapp */;
 			targetProxy = 391DA6892CF5B0A7007DF9C8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -463,10 +463,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = MC7CLNYXK7;
+				DEVELOPMENT_TEAM = N4BWGU3NP7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = signavi_app/Info.plist;
+				INFOPLIST_FILE = signavi/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -479,7 +479,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "rm3.signavi-app";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ryukyu.signavi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -495,10 +495,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = MC7CLNYXK7;
+				DEVELOPMENT_TEAM = N4BWGU3NP7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = signavi_app/Info.plist;
+				INFOPLIST_FILE = signavi/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -511,7 +511,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "rm3.signavi-app";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ryukyu.signavi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -534,7 +534,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/signavi_app.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/signavi_app";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/signaviapp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/signaviapp";
 			};
 			name = Debug;
 		};
@@ -553,7 +553,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/signavi_app.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/signavi_app";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/signaviapp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/signaviapp";
 			};
 			name = Release;
 		};
@@ -570,7 +570,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = signavi_app;
+				TEST_TARGET_NAME = signavi;
 			};
 			name = Debug;
 		};
@@ -587,14 +587,14 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = signavi_app;
+				TEST_TARGET_NAME = signavi;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		391DA6692CF5B0A4007DF9C8 /* Build configuration list for PBXProject "signavi_app" */ = {
+		391DA6692CF5B0A4007DF9C8 /* Build configuration list for PBXProject "signavi" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				391DA6902CF5B0A7007DF9C8 /* Debug */,
@@ -603,7 +603,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		391DA6922CF5B0A7007DF9C8 /* Build configuration list for PBXNativeTarget "signavi_app" */ = {
+		391DA6922CF5B0A7007DF9C8 /* Build configuration list for PBXNativeTarget "signaviapp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				391DA6932CF5B0A7007DF9C8 /* Debug */,
@@ -612,7 +612,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		391DA6952CF5B0A7007DF9C8 /* Build configuration list for PBXNativeTarget "signavi_appTests" */ = {
+		391DA6952CF5B0A7007DF9C8 /* Build configuration list for PBXNativeTarget "signaviappTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				391DA6962CF5B0A7007DF9C8 /* Debug */,
@@ -621,7 +621,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		391DA6982CF5B0A7007DF9C8 /* Build configuration list for PBXNativeTarget "signavi_appUITests" */ = {
+		391DA6982CF5B0A7007DF9C8 /* Build configuration list for PBXNativeTarget "signaviappUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				391DA6992CF5B0A7007DF9C8 /* Debug */,
