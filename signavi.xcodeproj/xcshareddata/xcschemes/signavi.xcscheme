@@ -16,8 +16,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "391DA66D2CF5B0A4007DF9C8"
-               BuildableName = "signaviapp.app"
-               BlueprintName = "signaviapp"
+               BuildableName = "signavi.app"
+               BlueprintName = "signavi"
                ReferencedContainer = "container:signavi.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,8 +45,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "391DA66D2CF5B0A4007DF9C8"
-            BuildableName = "signaviapp.app"
-            BlueprintName = "signaviapp"
+            BuildableName = "signavi.app"
+            BlueprintName = "signavi"
             ReferencedContainer = "container:signavi.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -62,8 +62,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "391DA66D2CF5B0A4007DF9C8"
-            BuildableName = "signaviapp.app"
-            BlueprintName = "signaviapp"
+            BuildableName = "signavi.app"
+            BlueprintName = "signavi"
             ReferencedContainer = "container:signavi.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
