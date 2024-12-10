@@ -73,10 +73,10 @@
             </objects>
             <point key="canvasLocation" x="64.444444444444443" y="-2.2222222222222223"/>
         </scene>
-        <!--View Controller-->
+        <!--Setting View Controller-->
         <scene sceneID="LOz-AN-tQe">
             <objects>
-                <viewController id="xxs-ZJ-KLu" sceneMemberID="viewController">
+                <viewController id="xxs-ZJ-KLu" customClass="SettingViewController" customModule="signavi" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Rpx-Ac-eI3">
                         <rect key="frame" x="0.0" y="0.0" width="810" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
