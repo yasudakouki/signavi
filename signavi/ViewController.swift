@@ -3,6 +3,8 @@ import AVFoundation
 
 class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     @IBOutlet weak var estimate_cals_time: UILabel! // ラベル
+    @IBOutlet weak var setting_button: UIButton!  //画面遷移用のボタン
+
     var previewView = UIImageView() // カメラ映像表示用ビュー
     var cameraManager = CameraManager() // CameraManagerを利用
     
@@ -66,6 +68,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         view.addSubview(estimate_cals_time)
         
         // ラベルを前面に表示
+        view.bringSubviewToFront(setting_button)
         view.bringSubviewToFront(estimate_cals_time)
     }
     
