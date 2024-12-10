@@ -121,8 +121,6 @@
 		391DA6702CF5B0A4007DF9C8 /* signavi */ = {
 			isa = PBXGroup;
 			children = (
-				398204382D084D990083B57C /* SettingViewController.swift */,
-				398204362D084A7E0083B57C /* SettingsView.swift */,
 				391DA6A12CF5B1D9007DF9C8 /* AppDelegate.swift */,
 				391DA69D2CF5B155007DF9C8 /* SceneDelegate.swift */,
 				39A8131A2CF788D3004356E5 /* yolo11m_speed_limit_40.mlpackage */,
@@ -137,6 +135,8 @@
 				391DA6752CF5B0A6007DF9C8 /* Assets.xcassets */,
 				394176EE2D00633F0006F62D /* colorUtility.swift */,
 				39A813162CF6300D004356E5 /* soundplayer.swift */,
+				398204382D084D990083B57C /* SettingViewController.swift */,
+				398204362D084A7E0083B57C /* SettingsView.swift */,
 				39A813082CF6280E004356E5 /* Main.storyboard */,
 				39A8130A2CF62816004356E5 /* LaunchScreen.storyboard */,
 			);
