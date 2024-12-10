@@ -122,7 +122,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             if !detect_signs.isEmpty {
                 // detect_signsに要素がある場合の処理
                 print("音を再生します")
-                soundPlayer.musicPlayer(Detection_label: "この変数は今は使わない")
+                //音の再生について
+                //soundPlayer.musicPlayer(Detection_label: "この変数は今は使わない")
                 //検出した標識をリセットする
                 detect_signs=[]
             }

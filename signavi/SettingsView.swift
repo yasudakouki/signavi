@@ -1,23 +1,22 @@
 import SwiftUI
 
 struct SettingView: View {
-    @State private var draw_rectangle: Bool = false
-    @State private var isVibrationOn: Bool = false
+    @State private var draw_rectangle: Bool = UserDefaults.standard.bool(forKey: "draw_rectangle")
+    @State private var isVibrationOn: Bool = UserDefaults.standard.bool(forKey: "isVibrationOn")
     
     var body: some View {
         Form {
             Section(header: Text("View setting")) {
                 Toggle("draw rectangle", isOn: $draw_rectangle)
-                //Toggle("Vibration", isOn: $isVibrationOn)
+                // Toggle("Vibration", isOn: $isVibrationOn)
             }
             Section(header: Text("Save:")) {
                 Button(action: {
-                    /*
-                    print("Settings Saved: Alarm - \(isAlarmOn), Vibration - \(isVibrationOn)")
-                     */
-                    print("save was taped")
-                })
-                {
+                    // 設定を保存
+                    UserDefaults.standard.set(self.draw_rectangle, forKey: "draw_rectangle")
+                    UserDefaults.standard.set(self.isVibrationOn, forKey: "isVibrationOn")
+                    print("save was tapped")
+                }) {
                     HStack {
                         Spacer()
                         Text("Done")
@@ -30,3 +29,4 @@ struct SettingView: View {
         .navigationTitle("Settings")
     }
 }
+
