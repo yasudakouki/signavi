@@ -6,6 +6,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     var previewView = UIImageView() // カメラ映像表示用ビュー
     var cameraManager = CameraManager() // CameraManagerを利用
     
+    var soundPlayer = SoundPlayer()//音声アナウンスを利用するため
+    
     var videoSize = CGSize.zero
     
     //時間の計測を確認するため
@@ -13,12 +15,14 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     var after_calc_time = 0
     var before_calc_time = 0
     var calc_time = 0
+    var detect_signs: Set<String> = []
+    var frame_count = 0
     
     var renderManager = RenderManager() //描写用
     //モデルの読み込みのinitや検知のdetectionを呼び出す
     private var detectionManager: DetectionManager!
     
-    var desiredFrameRate = 30 // フレームレート設定
+    var desiredFrameRate = 20 // フレームレート設定
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -95,9 +99,35 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             print("Confidence: \(detection.confidence)")
         }
         
-        //推定時間を計算してラベルに反映
+        
+        //発見した標識のラベルを追加する set型だから同じやつは追加されない
+        for detection in detections {
+            if let label = detection.label {
+                detect_signs.insert(label) // アンラップ後に追加
+            }
+        }
+        
+        frame_count = frame_count + 1
         
         
+        //数百フレームごとに音声アナウンスしたい
+        if frame_count >= 200 {
+            print("frame_countをリセットします")
+            
+            frame_count = 0
+            //標識がある場合にて再生(emptyじゃない場合のみ)
+            if !detect_signs.isEmpty {
+                // detect_signsに要素がある場合の処理
+                print("音を再生します")
+                soundPlayer.musicPlayer(Detection_label: "この変数は今は使わない")
+                //検出した標識をリセットする
+                detect_signs=[]
+            }
+            
+        }
+        
+        
+
         
         
         
@@ -110,6 +140,9 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             self.estimate_cals_time.text="estimate:\(self.calc_time)ms"
             print("estimate:\(self.calc_time)")
         }
+        
+        
+        
          
         
 
