@@ -5,6 +5,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     @IBOutlet weak var estimate_cals_time: UILabel! // ラベル
     @IBOutlet weak var setting_button: UIButton!  //画面遷移用のボタン
 
+    //設定画面にある 描写on/offの変数(bool)
+
     var previewView = UIImageView() // カメラ映像表示用ビュー
     var cameraManager = CameraManager() // CameraManagerを利用
     
@@ -134,27 +136,27 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
 
         
         
-        
-        
+        //設定画面にある 描写on/offの変数(bool)
+        let drawRectangle_TF = UserDefaults.standard.object(forKey: "draw_rectangle") as? Bool ?? false
+
         DispatchQueue.main.async {
             
-            self.previewView.image=self.renderManager.render(detections: detections, pixelBuffer: pixelBuffer, onView: self.view,videoSize: self.videoSize)
+                self.previewView.image=self.renderManager.render(detections: detections, pixelBuffer: pixelBuffer, onView: self.view,videoSize: self.videoSize,RectVisible:drawRectangle_TF)
+                
+            
+            
+            
             self.after_calc_time = Int(Date().timeIntervalSince(self.now) * 1000)
             self.calc_time = self.after_calc_time - self.before_calc_time
+            
+
+      
+            
             self.estimate_cals_time.text="estimate:\(self.calc_time)ms"
+            
+            
             print("estimate:\(self.calc_time)")
         }
-        
-        
-        
-         
-        
-
-        
-
-        
-        
-        
         
     }
     
