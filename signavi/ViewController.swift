@@ -139,10 +139,28 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         //設定画面にある 描写on/offの変数(bool)
         let drawRectangle_TF = UserDefaults.standard.object(forKey: "draw_rectangle") as? Bool ?? false
 
+        
+        
+        
         DispatchQueue.main.async {
             
-                self.previewView.image=self.renderManager.render(detections: detections, pixelBuffer: pixelBuffer, onView: self.view,videoSize: self.videoSize,RectVisible:drawRectangle_TF)
-                
+           
+            if drawRectangle_TF {
+                // 描画がONの場合、検出結果を描画する
+                self.previewView.image = self.renderManager.render(
+                    detections: detections,
+                    pixelBuffer: pixelBuffer,
+                    onView: self.view,
+                    videoSize: self.videoSize,
+                    RectVisible: drawRectangle_TF
+                )
+            } else {
+                // 描画がOFFの場合、単純にカメラ映像を表示する
+                let ciImage = CIImage(cvPixelBuffer: pixelBuffer)
+                let uiImage = UIImage(ciImage: ciImage)
+                self.previewView.image = uiImage
+            }
+            
             
             
             
@@ -157,6 +175,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             
             print("estimate:\(self.calc_time)")
         }
+         
+         
         
     }
     
