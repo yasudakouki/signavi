@@ -3,7 +3,8 @@ import SwiftUI
 struct SettingView: View {
     @State private var draw_rectangle: Bool = UserDefaults.standard.bool(forKey: "draw_rectangle")
     @State private var isVibrationOn: Bool = UserDefaults.standard.bool(forKey: "isVibrationOn")
-    
+    @State private var screenBrightness: Float = Float(UIScreen.main.brightness) // 初期値を現在の明るさに設定
+
     @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
@@ -27,6 +28,19 @@ struct SettingView: View {
                     Toggle("draw rectangle", isOn: $draw_rectangle)
                     // Toggle("Vibration", isOn: $isVibrationOn)
                 }
+                
+                Section(header: Text("Screen Brightness")) {
+                    HStack {
+                        Text("Brightness")
+                        Slider(value: $screenBrightness, in: 0...1, step: 0.01) {
+                            Text("Brightness Slider")
+                        }
+                        .onChange(of: screenBrightness) { newValue in
+                            UIScreen.main.brightness = CGFloat(newValue) // 明るさを調整
+                        }
+                    }
+                }
+                
                 Section(header: Text("Save:")) {
                     Button(action: {
                         // 設定を保存
