@@ -22,6 +22,7 @@
 		394176EF2D00634A0006F62D /* colorUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394176EE2D00633F0006F62D /* colorUtility.swift */; };
 		398204372D084A890083B57C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398204362D084A7E0083B57C /* SettingsView.swift */; };
 		398204392D084DA20083B57C /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398204382D084D990083B57C /* SettingViewController.swift */; };
+		3992C4F52D0D594D00B56BB0 /* extend_seting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3992C4F42D0D594600B56BB0 /* extend_seting.swift */; };
 		39A813092CF6280E004356E5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39A813082CF6280E004356E5 /* Main.storyboard */; };
 		39A8130B2CF62816004356E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39A8130A2CF62816004356E5 /* LaunchScreen.storyboard */; };
 		39A813152CF62FD4004356E5 /* best_640.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 39A813142CF62FD4004356E5 /* best_640.mlpackage */; };
@@ -65,6 +66,7 @@
 		394176EE2D00633F0006F62D /* colorUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = colorUtility.swift; sourceTree = "<group>"; };
 		398204362D084A7E0083B57C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		398204382D084D990083B57C /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		3992C4F42D0D594600B56BB0 /* extend_seting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extend_seting.swift; sourceTree = "<group>"; };
 		39A813042CF624BA004356E5 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		39A813082CF6280E004356E5 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		39A8130A2CF62816004356E5 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 				394176E02CFFD98E0006F62D /* yolov8n.mlpackage */,
 				39A813042CF624BA004356E5 /* Info.plist */,
 				391DA69F2CF5B15B007DF9C8 /* ViewController.swift */,
+				3992C4F42D0D594600B56BB0 /* extend_seting.swift */,
 				394176E42D00447B0006F62D /* CameraManager.swift */,
 				394176EC2D0062E50006F62D /* DetectionManager.swift */,
 				394176E82D0044AA0006F62D /* RenderManager.swift */,
@@ -301,6 +304,7 @@
 				391DA6A22CF5B1D9007DF9C8 /* AppDelegate.swift in Sources */,
 				394176E12CFFD98E0006F62D /* yolov8n.mlpackage in Sources */,
 				394176ED2D0062EE0006F62D /* DetectionManager.swift in Sources */,
+				3992C4F52D0D594D00B56BB0 /* extend_seting.swift in Sources */,
 				394176EF2D00634A0006F62D /* colorUtility.swift in Sources */,
 				391DA69E2CF5B155007DF9C8 /* SceneDelegate.swift in Sources */,
 				398204372D084A890083B57C /* SettingsView.swift in Sources */,
