@@ -18,18 +18,23 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="estimate_label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PG1-Q2-uzZ">
-                                <rect key="frame" x="294" y="784" width="223" height="52"/>
+                                <rect key="frame" x="109" y="784" width="223" height="52"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mrt-f4-25s" userLabel="setting_button">
-                                <rect key="frame" x="670" y="70" width="75" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mrt-f4-25s" userLabel="setting_button">
+                                <rect key="frame" x="730" y="30" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="SE9-fv-gZ5"/>
+                                    <constraint firstAttribute="width" constant="50" id="bZ8-3W-IBO"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="gearshape.fill" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage"/>
+                                </buttonConfiguration>
                                 <connections>
                                     <segue destination="xxs-ZJ-KLu" kind="show" id="Ndx-mt-fTy"/>
                                 </connections>
@@ -37,6 +42,10 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Mrt-f4-25s" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="30" id="pWR-TN-HrD"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Mrt-f4-25s" secondAttribute="trailing" constant="30" id="zUd-mZ-wK6"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="AJC-aS-C2C"/>
                     <connections>
@@ -84,6 +93,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="gearshape.fill" catalog="system" width="128" height="123"/>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
