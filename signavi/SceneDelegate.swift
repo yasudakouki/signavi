@@ -31,7 +31,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Called when the scene will move from an active state to an inactive state.
         // This may occur due to temporary interruptions (ex. an incoming phone call).
         print("willresignactive呼び出し")
-        UIScreen.main.brightness = 0.1 // 画面を暗くする
+        UIScreen.main.brightness = 0.1
+    // 画面を暗くする
     }
 
     func sceneWillEnterForeground(_ scene: UIScene) {

@@ -49,6 +49,9 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         
         // UIセットアップ
         setupUI()
+        
+        // スリープを防止
+        UIApplication.shared.isIdleTimerDisabled = true
     }
     
     override func viewDidLayoutSubviews() {
