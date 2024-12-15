@@ -82,6 +82,18 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         estimate_cals_time.text = "Label set complete"
         view.addSubview(estimate_cals_time)
         
+        
+        if let originalImage = UIImage(named: "haguruma") {
+            let newSize = CGSize(width: 100, height: 100) // 必要な大きさに指定
+            UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)
+            originalImage.draw(in: CGRect(origin: .zero, size: newSize))
+            let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+            
+            setting_button.setImage(resizedImage, for: .normal)
+        }
+
+
         // ラベルを前面に表示
         view.bringSubviewToFront(setting_button)
         view.bringSubviewToFront(estimate_cals_time)
