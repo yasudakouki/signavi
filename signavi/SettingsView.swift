@@ -4,6 +4,8 @@ struct SettingView: View {
     @State private var draw_rectangle: Bool = UserDefaults.standard.bool(forKey: "draw_rectangle")
     @State private var isVibrationOn: Bool = UserDefaults.standard.bool(forKey: "isVibrationOn")
     @State private var screenBrightness: Float = Float(UIScreen.main.brightness) // 初期値を現在の明るさに設定
+    
+    @State private var auto_luminus: Bool = UserDefaults.standard.bool(forKey: "auto_luminus")
 
     @Environment(\.presentationMode) var presentationMode
 
@@ -30,16 +32,28 @@ struct SettingView: View {
                 }
                 
                 Section(header: Text("Screen Brightness")) {
-                    HStack {
-                        Text("Brightness")
-                        Slider(value: $screenBrightness, in: 0...1, step: 0.01) {
-                            Text("Brightness Slider")
+                    VStack(alignment: .leading) {
+                        // 自動設定トグル
+                        VStack(alignment: .leading) {
+                            Toggle("Luminous Auto Setting", isOn: $auto_luminus)
                         }
-                        .onChange(of: screenBrightness) { newValue in
-                            UIScreen.main.brightness = CGFloat(newValue) // 明るさを調整
+                        
+                        Divider() // セクションの間に線を追加
+
+                        // 明るさ調整スライダー
+                        VStack(alignment: .leading) {
+                            HStack {
+                                Text("Brightness")
+                                Slider(value: $screenBrightness, in: 0...1, step: 0.01) {
+                                }
+                                .onChange(of: screenBrightness) { newValue in
+                                    UIScreen.main.brightness = CGFloat(newValue) // 明るさを調整
+                                }
+                            }
                         }
                     }
                 }
+
                 
                 Section(header: Text("Save:")) {
                     Button(action: {
