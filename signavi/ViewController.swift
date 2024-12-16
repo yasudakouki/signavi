@@ -61,7 +61,12 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         // ナビゲーションバーを非表示にする
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         
+        
+        
+        /*
         let max_width: CGFloat = view.bounds.width
+        
+        
         // ボタンのレイアウトを更新
         setting_button.frame = CGRect(
             x: max_width - 50 - 20 ,  // 右端から50px（ボタンの幅）と余白20pxを引いた位置
@@ -69,6 +74,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             width: 50,  // ボタンの幅
             height: 50  // ボタンの高さ
         )
+         */
             
     }
     
@@ -78,7 +84,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         view.addSubview(previewView)
         
         // ラベルの位置とサイズを設定
-        estimate_cals_time.frame = CGRect(x: 20, y: 40, width: 300, height: 60)
+        let estimate_label_Width = (UIScreen.main.bounds.width)/2
+        estimate_cals_time.frame = CGRect(x: 20, y: 40, width: estimate_label_Width, height: 60)
         estimate_cals_time.text = "Label set complete"
         view.addSubview(estimate_cals_time)
         
