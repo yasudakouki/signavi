@@ -21,6 +21,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     var calc_time = 0
     var detect_signs: Set<String> = []
     var frame_count = 0
+    var viewdidappear_bool = false
     
     var renderManager = RenderManager() //描写用
     //モデルの読み込みのinitや検知のdetectionを呼び出す
@@ -28,6 +29,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     
     var desiredFrameRate = 20 // フレームレート設定
     
+    
+    //アプリでのカメラ等の初期設定用 １回のみ実行
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Setting up camera...")
@@ -53,6 +56,49 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         // スリープを防止
         UIApplication.shared.isIdleTimerDisabled = true
     }
+    
+    
+    
+    //画面遷移時(設定から戻ってきて実行する)　1回目はskipする
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        
+        if viewdidappear_bool {
+            // 初回起動時には何も実行しない
+            print("viewDidAppear: 2回目以降")
+        } else {
+            // 2回目以降の表示時に実行する処理
+            print("viewDidAppear: 初回起動時")
+            viewdidappear_bool = true
+            return
+        }
+        
+        
+        guard let device = AVCaptureDevice.default(for: .video) else {
+            print("Error: No video devices available")
+            return
+        }
+        
+        if UserDefaults.standard.object(forKey: "setting_fps_rate") == nil {
+            UserDefaults.standard.set(true, forKey: "setting_fps_rate")
+        }
+        
+        let setting_fps_rate : Int = UserDefaults.standard.object(forKey: "setting_fps_rate") as? Int ?? 20
+        
+        do {
+            try device.lockForConfiguration()
+            device.activeVideoMinFrameDuration = CMTime(value: 1, timescale: Int32(setting_fps_rate) )
+            device.activeVideoMaxFrameDuration = CMTime(value: 1, timescale: Int32(setting_fps_rate) )
+            device.unlockForConfiguration()
+        } catch {
+            print("Failed to lock device for configuration: \(error.localizedDescription)")
+        }
+        
+    }
+    
+    
+    
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -155,8 +201,14 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             }
         }
         
-        //設定画面にある 描写on/offの変数(bool)
+        //設定画面にある 描写on/offの変数(bool)の読み込み
+        if UserDefaults.standard.object(forKey: "draw_rectangle") == nil {
+            UserDefaults.standard.set(true, forKey: "draw_rectangle")
+        }
+        
         let drawRectangle_TF = UserDefaults.standard.object(forKey: "draw_rectangle") as? Bool ?? false
+        
+
         
         DispatchQueue.main.async {
             if drawRectangle_TF {
