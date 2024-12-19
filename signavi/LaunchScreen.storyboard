@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <device id="iPad13_0rounded" orientation="portrait" layout="fullscreen" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
@@ -13,24 +13,23 @@
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sA1-l3-rsJ">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1032" height="1376"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="signavi" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="kdY-yy-NIy">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" text="signavi" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="kdY-yy-NIy">
                                 <rect key="frame" x="40" y="367" width="312" height="118"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="AppleColorEmoji" family="Apple Color Emoji" pointSize="86"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="fU5-ui-R38"/>
-                        <color key="backgroundColor" red="0.278" green="0.733" blue="0.925" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.27800000000000002" green="0.73299999999999998" blue="0.92500000000000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="kdY-yy-NIy" firstAttribute="centerX" secondItem="sA1-l3-rsJ" secondAttribute="centerX" id="centerXConstraint"/>
                             <constraint firstItem="kdY-yy-NIy" firstAttribute="centerY" secondItem="sA1-l3-rsJ" secondAttribute="centerY" id="centerYConstraint"/>
-                            <constraint firstItem="kdY-yy-NIy" firstAttribute="width" secondItem="sA1-l3-rsJ" secondAttribute="width" multiplier="0.8" id="widthConstraint"/>
                             <constraint firstItem="kdY-yy-NIy" firstAttribute="height" secondItem="sA1-l3-rsJ" secondAttribute="height" multiplier="0.2" id="heightConstraint"/>
+                            <constraint firstItem="kdY-yy-NIy" firstAttribute="width" secondItem="sA1-l3-rsJ" secondAttribute="width" multiplier="0.8" id="widthConstraint"/>
                         </constraints>
                     </view>
                 </viewController>

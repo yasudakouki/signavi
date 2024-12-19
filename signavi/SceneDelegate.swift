@@ -11,7 +11,33 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        
+        // UIScene が UIWindowScene であることを確認
+        guard let windowScene = scene as? UIWindowScene else { return }
+
+        // UIWindowを作成
+        let window = UIWindow(windowScene: windowScene)
+
+        // Storyboardの読み込み
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+
+        // 条件に応じて初期画面を切り替える
+        let initialViewController: UIViewController
+        if true {
+            initialViewController = storyboard.instantiateViewController(withIdentifier: "AnnounceWindow")
+        } else {
+            initialViewController = storyboard.instantiateViewController(withIdentifier: "MainWindow")
+        }
+
+        // UIWindowの設定
+        window.rootViewController = initialViewController
+        self.window = window
+        window.makeKeyAndVisible()
+        
+        
+        
+        
+        //guard let _ = (scene as? UIWindowScene) else { return }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -50,7 +76,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         print("既存の明るさ設定を保存")
         originalBrightness = UIScreen.main.brightness
         // 明るさを変更する
-        UIScreen.main.brightness = 0.2
+        UIScreen.main.brightness = 0.5
         print("明るさを変更した")
        
     }

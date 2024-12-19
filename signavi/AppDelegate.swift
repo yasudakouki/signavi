@@ -5,10 +5,40 @@ import SwiftUI
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         return true
     }
+    
+      
+    /*
+    var window: UIWindow?
+
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+
+        
+       
+      // UIWindowのインスタンスを作成
+      window = UIWindow(frame: UIScreen.main.bounds)
+
+      // Storyboardをロード
+      let storyboard = UIStoryboard(name: "Main", bundle: nil)
+
+      // 表示したいViewControllerをStoryboard IDで取得
+      let initialViewController: UIViewController
+      if true { // 条件に応じて画面を切り替える
+          initialViewController = storyboard.instantiateViewController(withIdentifier: "AnnounceWindow")
+      }
+
+      // 初期のViewControllerを設定
+      window?.rootViewController = initialViewController
+      window?.makeKeyAndVisible()
+
+      return true
+    }
+    */
+
 
     // MARK: UISceneSession Lifecycle
 

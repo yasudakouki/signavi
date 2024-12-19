@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="51L-Tz-5FB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FFE-yV-Q7g">
     <device id="ipad10_2" orientation="portrait" layout="fullscreen" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -13,7 +13,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="signavi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainWindow" id="BYZ-38-t0r" customClass="ViewController" customModule="signavi" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="810" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -35,7 +35,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="xxs-ZJ-KLu" kind="show" id="Ndx-mt-fTy"/>
+                                    <segue destination="xxs-ZJ-KLu" kind="presentation" modalPresentationStyle="fullScreen" id="Ndx-mt-fTy"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="estimate_label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PG1-Q2-uzZ">
@@ -67,7 +67,7 @@
         <!--Setting View Controller-->
         <scene sceneID="LOz-AN-tQe">
             <objects>
-                <viewController id="xxs-ZJ-KLu" customClass="SettingViewController" customModule="signavi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SettingWindow" id="xxs-ZJ-KLu" customClass="SettingViewController" customModule="signavi" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Rpx-Ac-eI3">
                         <rect key="frame" x="0.0" y="0.0" width="810" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -80,27 +80,35 @@
             </objects>
             <point key="canvasLocation" x="1660" y="-2"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="sIe-Mu-h5i">
+        <!--Announce View Controller-->
+        <scene sceneID="Wih-RK-gTM">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="51L-Tz-5FB" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DpG-xR-oFo">
-                        <rect key="frame" x="0.0" y="20" width="810" height="50"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
+                <viewController storyboardIdentifier="AnnounceWindow" id="FFE-yV-Q7g" customClass="AnnounceViewController" customModule="signavi" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fPK-hB-BaN">
+                        <rect key="frame" x="0.0" y="0.0" width="810" height="1080"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="warning_test" translatesAutoresizingMaskIntoConstraints="NO" id="PAb-zZ-wEZ">
+                                <rect key="frame" x="-121" y="-25" width="1052" height="1085"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="OtU-Zu-d0O"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="kY5-kY-6u1"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="6e4-FJ-QeI"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="change_main_window" modalPresentationStyle="fullScreen" id="E5c-8E-GZ0"/>
                     </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="RdO-P1-QyB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T08-kW-16s" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="64.444444444444443" y="-2.2222222222222223"/>
+            <point key="canvasLocation" x="-95" y="-2"/>
         </scene>
     </scenes>
     <resources>
         <image name="gearshape.fill" catalog="system" width="128" height="123"/>
+        <image name="warning_test" width="1080" height="1080"/>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
