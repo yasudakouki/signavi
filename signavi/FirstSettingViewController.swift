@@ -3,19 +3,52 @@ import SwiftUI
 
 class FirstSettingViewController: UIViewController {
     
+    
+    //ボタンやテキストというオブジェクトを紐づけ
     @IBOutlet weak var language_text: UILabel! // ラベル
     
     @IBOutlet weak var JP_button: UIButton!
     
+    @IBOutlet weak var EN_button: UIButton!
+    
+    @IBOutlet weak var KR_button: UIButton!
+    
+    @IBOutlet weak var CN_button: UIButton!
+
+    //ボタンの動作を紐づけする
     @IBAction func JP_button_func(_ sender: Any) {
-        print("tapされた")
+        print("JP:tapされた")
         UserDefaults.standard.set(true, forKey: "first_setting_TF")
         print("初期起動を保存しました: true")
         performSegue(withIdentifier: "change_announce_window", sender: nil)
     }
     
     
-
+    @IBAction func EN_button_func(_ sender: Any) {
+        print("EN:tapされた")
+        UserDefaults.standard.set(true, forKey: "first_setting_TF")
+        print("初期起動を保存しました: true")
+        performSegue(withIdentifier: "change_announce_window", sender: nil)
+    }
+    
+    
+    @IBAction func KR_button(_ sender: Any) {
+        print("KR:tapされた")
+        UserDefaults.standard.set(true, forKey: "first_setting_TF")
+        print("初期起動を保存しました: true")
+        performSegue(withIdentifier: "change_announce_window", sender: nil)
+    }
+    
+    
+    @IBAction func CN_button(_ sender: Any) {
+        print("CN:tapされた")
+        UserDefaults.standard.set(true, forKey: "first_setting_TF")
+        print("初期起動を保存しました: true")
+        performSegue(withIdentifier: "change_announce_window", sender: nil)
+    }
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // 現在の画面サイズを取得
@@ -27,19 +60,62 @@ class FirstSettingViewController: UIViewController {
         
         
         
-        // ラベルのフォントサイズを画面サイズに合わせて調整
-        let fontSize = min(screenWidth, screenHeight) * 0.1 // 画面幅や高さの5%をフォントサイズに設定
+        // 画面サイズに基づいてフォントサイズを設定
+        let fontSize = min(screenWidth, screenHeight) * 0.1
         language_text.font = UIFont.systemFont(ofSize: fontSize)
-        // ラベルのサイズを画面幅の70%に変更
+
+        // ラベルが複数行に対応するように設定
+        language_text.numberOfLines = 0
+        language_text.textAlignment = .left // テキストを中央揃え
+
+        // ラベルの幅を画面の70%に設定
         language_text.frame.size.width = screenWidth * 0.7
-        // ラベルの位置を中央に設定
-        language_text.center = CGPoint(x: screenWidth / 2, y: screenHeight / 4)
+
+        // ラベルのサイズをテキストに合わせて調整
+        language_text.sizeToFit()
+
+        // ラベルの位置を中央に設定（高さ調整に注意）
+        language_text.center = CGPoint(x: screenWidth / 2, y: screenHeight / 5)
+
          
+        
+        
+        
+        JP_button.titleLabel?.font = UIFont.systemFont(ofSize: fontSize)
+
+        // ラベルのサイズを画面幅の70%に変更
+        JP_button.frame.size.width = screenWidth * 0.7
+        // ラベルの位置を中央に設定
+        JP_button.center = CGPoint(x: screenWidth / 2, y: screenHeight*3 / 7)
+
+        
+        
+        EN_button.titleLabel?.font = UIFont.systemFont(ofSize: fontSize)
+
+        // ラベルのサイズを画面幅の70%に変更
+        EN_button.frame.size.width = screenWidth * 0.7
+        // ラベルの位置を中央に設定
+        EN_button.center = CGPoint(x: screenWidth / 2, y: screenHeight*4 / 7)
 
         
         
         
+        KR_button.titleLabel?.font = UIFont.systemFont(ofSize: fontSize)
+
+        // ラベルのサイズを画面幅の70%に変更
+        KR_button.frame.size.width = screenWidth * 0.7
+        // ラベルの位置を中央に設定
+        KR_button.center = CGPoint(x: screenWidth / 2, y: screenHeight*5 / 7)
+
         
+        
+        CN_button.titleLabel?.font = UIFont.systemFont(ofSize: fontSize)
+
+        // ラベルのサイズを画面幅の70%に変更
+        CN_button.frame.size.width = screenWidth * 0.7
+        // ラベルの位置を中央に設定
+        CN_button.center = CGPoint(x: screenWidth / 2, y: screenHeight*6 / 7)
+
         
         
         

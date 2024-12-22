@@ -123,7 +123,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="gray" title="日本語">
-                                    <fontDescription key="titleFontDescription" type="system" pointSize="80"/>
+                                    <fontDescription key="titleFontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="80"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="JP_button_func:" destination="oqD-ru-0Lh" eventType="touchUpInside" id="xwo-Xw-AVX"/>
@@ -136,6 +136,9 @@
                                 <buttonConfiguration key="configuration" style="gray" title="English">
                                     <fontDescription key="titleFontDescription" type="system" pointSize="80"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="EN_button_func:" destination="oqD-ru-0Lh" eventType="touchUpInside" id="JxW-OV-uOw"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sVt-Dd-Kxt" userLabel="KRbutton">
                                 <rect key="frame" x="104" y="639" width="232" height="110"/>
@@ -144,6 +147,9 @@
                                 <buttonConfiguration key="configuration" style="gray" title="한국어">
                                     <fontDescription key="titleFontDescription" type="system" pointSize="80"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="KR_button:" destination="oqD-ru-0Lh" eventType="touchUpInside" id="VXC-s0-Dug"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yod-Zm-r7S" userLabel="言語設定テキスト">
                                 <rect key="frame" x="68" y="134" width="304" height="144"/>
@@ -161,13 +167,19 @@ First Setting</string>
                                 <buttonConfiguration key="configuration" style="gray" title="中文">
                                     <fontDescription key="titleFontDescription" type="system" pointSize="80"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="CN_button:" destination="oqD-ru-0Lh" eventType="touchUpInside" id="ixg-Mw-1NY"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6O9-Td-b4W"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <connections>
+                        <outlet property="CN_button" destination="Xaz-Bb-VC3" id="4yq-yb-YQ4"/>
+                        <outlet property="EN_button" destination="mAj-lA-PEd" id="8Hi-c1-3cr"/>
                         <outlet property="JP_button" destination="Uqf-gL-fuI" id="HDR-4k-Bl9"/>
+                        <outlet property="KR_button" destination="sVt-Dd-Kxt" id="TU4-zz-g5M"/>
                         <outlet property="language_text" destination="Yod-Zm-r7S" id="dwm-7R-BK3"/>
                         <segue destination="FFE-yV-Q7g" kind="presentation" identifier="change_announce_window" modalPresentationStyle="fullScreen" id="eLh-xc-KLz"/>
                     </connections>
