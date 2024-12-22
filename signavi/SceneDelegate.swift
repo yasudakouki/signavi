@@ -20,14 +20,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // Storyboardの読み込み
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        
+        let first_setting_TF = UserDefaults.standard.object(forKey: "first_setting_TF") as? Bool ?? false
+        print("取得した値: \(first_setting_TF)")
 
         // 条件に応じて初期画面を切り替える
         let initialViewController: UIViewController
-        if true {
+        if first_setting_TF  {
             initialViewController = storyboard.instantiateViewController(withIdentifier: "AnnounceWindow")
         } else {
-            initialViewController = storyboard.instantiateViewController(withIdentifier: "MainWindow")
+            initialViewController = storyboard.instantiateViewController(withIdentifier: "FirstSettingWindow")
         }
+        
 
         // UIWindowの設定
         window.rootViewController = initialViewController

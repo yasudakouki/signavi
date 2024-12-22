@@ -24,6 +24,7 @@
 		398204392D084DA20083B57C /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398204382D084D990083B57C /* SettingViewController.swift */; };
 		3992C4F52D0D594D00B56BB0 /* extend_seting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3992C4F42D0D594600B56BB0 /* extend_seting.swift */; };
 		3992C4FA2D0F390B00B56BB0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3992C4F92D0F390B00B56BB0 /* Main.storyboard */; };
+		39A4676A2D1487D900739A61 /* FirstSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A467692D1487D800739A61 /* FirstSettingViewController.swift */; };
 		39A8130B2CF62816004356E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39A8130A2CF62816004356E5 /* LaunchScreen.storyboard */; };
 		39A813152CF62FD4004356E5 /* best_640.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 39A813142CF62FD4004356E5 /* best_640.mlpackage */; };
 		39A813172CF6300D004356E5 /* soundplayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A813162CF6300D004356E5 /* soundplayer.swift */; };
@@ -70,6 +71,7 @@
 		398204382D084D990083B57C /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		3992C4F42D0D594600B56BB0 /* extend_seting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extend_seting.swift; sourceTree = "<group>"; };
 		3992C4F92D0F390B00B56BB0 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		39A467692D1487D800739A61 /* FirstSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstSettingViewController.swift; sourceTree = "<group>"; };
 		39A813042CF624BA004356E5 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		39A8130A2CF62816004356E5 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		39A813142CF62FD4004356E5 /* best_640.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = best_640.mlpackage; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				398204382D084D990083B57C /* SettingViewController.swift */,
 				398204362D084A7E0083B57C /* SettingsView.swift */,
 				39D65A7D2D126AD50015EE60 /* AnnounceViewController.swift */,
+				39A467692D1487D800739A61 /* FirstSettingViewController.swift */,
 				3992C4F92D0F390B00B56BB0 /* Main.storyboard */,
 				39A8130A2CF62816004356E5 /* LaunchScreen.storyboard */,
 			);
@@ -313,6 +316,7 @@
 				3992C4F52D0D594D00B56BB0 /* extend_seting.swift in Sources */,
 				394176EF2D00634A0006F62D /* colorUtility.swift in Sources */,
 				391DA69E2CF5B155007DF9C8 /* SceneDelegate.swift in Sources */,
+				39A4676A2D1487D900739A61 /* FirstSettingViewController.swift in Sources */,
 				39D65A7C2D1196F80015EE60 /* best_yasuda.mlpackage in Sources */,
 				398204372D084A890083B57C /* SettingsView.swift in Sources */,
 				39D65A7E2D126AE20015EE60 /* AnnounceViewController.swift in Sources */,
@@ -491,6 +495,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -522,6 +527,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (

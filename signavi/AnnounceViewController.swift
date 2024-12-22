@@ -9,10 +9,9 @@ class AnnounceViewController: UIViewController {
     
         print("アナウンス画面です")
         print("aaaaaaa")
-        sleep(5)
         
     // 5秒後に画面遷移
-        DispatchQueue.main.asyncAfter(deadline: .now()) {
+        DispatchQueue.main.asyncAfter(deadline: .now()+5) {
             self.performSegue(withIdentifier: "change_main_window", sender: nil)
         }
         
