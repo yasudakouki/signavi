@@ -28,6 +28,7 @@
 		39A813152CF62FD4004356E5 /* best_640.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 39A813142CF62FD4004356E5 /* best_640.mlpackage */; };
 		39A813172CF6300D004356E5 /* soundplayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A813162CF6300D004356E5 /* soundplayer.swift */; };
 		39A8131B2CF788D3004356E5 /* yolo11m_speed_limit_40.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 39A8131A2CF788D3004356E5 /* yolo11m_speed_limit_40.mlpackage */; };
+		BB22EA982D21668E00ECE39F /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BB22EA972D21668E00ECE39F /* Settings.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		39A813142CF62FD4004356E5 /* best_640.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = best_640.mlpackage; sourceTree = "<group>"; };
 		39A813162CF6300D004356E5 /* soundplayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = soundplayer.swift; sourceTree = "<group>"; };
 		39A8131A2CF788D3004356E5 /* yolo11m_speed_limit_40.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = yolo11m_speed_limit_40.mlpackage; sourceTree = "<group>"; };
+		BB22EA972D21668E00ECE39F /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +138,7 @@
 				394176E82D0044AA0006F62D /* RenderManager.swift */,
 				394176EA2D0045CF0006F62D /* Detection.swift */,
 				391DA6752CF5B0A6007DF9C8 /* Assets.xcassets */,
+				BB22EA972D21668E00ECE39F /* Settings.bundle */,
 				394176EE2D00633F0006F62D /* colorUtility.swift */,
 				39A813162CF6300D004356E5 /* soundplayer.swift */,
 				398204382D084D990083B57C /* SettingViewController.swift */,
@@ -173,6 +176,7 @@
 				391DA66A2CF5B0A4007DF9C8 /* Sources */,
 				391DA66B2CF5B0A4007DF9C8 /* Frameworks */,
 				391DA66C2CF5B0A4007DF9C8 /* Resources */,
+				BB22EA992D2166E500ECE39F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -268,6 +272,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB22EA982D21668E00ECE39F /* Settings.bundle in Resources */,
 				3992C4FA2D0F390B00B56BB0 /* Main.storyboard in Resources */,
 				39A8130B2CF62816004356E5 /* LaunchScreen.storyboard in Resources */,
 				391DA6762CF5B0A6007DF9C8 /* Assets.xcassets in Resources */,
@@ -289,6 +294,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		BB22EA992D2166E500ECE39F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "echo \"====Run Scriptを実行====\"\necho \"PRODUCT_SETTINGS_PATH=${PRODUCT_SETTINGS_PATH}\"\necho \"BUILT_PRODUCTS_DIR=${BUILT_PRODUCTS_DIR}\"\necho \"WRAPPER_NAME=${WRAPPER_NAME}\"\n\n# 出力先ファイルの指定\nOUTPUT_FILE_ROOT=\"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/Settings.bundle/Root.plist\"\nOUTPUT_FILE_LICENSES=\"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/Settings.bundle/Licenses.plist\"\n\n# Root.plistとLicenses.plistが存在するか確認\nif [ ! -f \"${OUTPUT_FILE_ROOT}\" ] || [ ! -f \"${OUTPUT_FILE_LICENSES}\" ]; then\n    echo \"Error: Root.plist または Licenses.plist が見つかりません!\"\n    exit 1\nfi\n\necho \"ライセンス表記が正しく設定されています。\"\necho \"====Run Script完了====\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		391DA66A2CF5B0A4007DF9C8 /* Sources */ = {
@@ -475,7 +501,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = MC7CLNYXK7;
+				DEVELOPMENT_TEAM = 23P69HQY7D;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = signavi/Info.plist;
@@ -491,7 +517,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ryukyu-ryotest.signavi";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tokuyama.signavi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -507,7 +533,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = MC7CLNYXK7;
+				DEVELOPMENT_TEAM = 23P69HQY7D;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = signavi/Info.plist;
@@ -523,7 +549,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ryukyu-ryotest.signavi";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tokuyama.signavi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
