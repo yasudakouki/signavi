@@ -52,7 +52,6 @@ class SoundPlayer: NSObject, AVAudioPlayerDelegate {
         // 再生中の場合は新しい音声を再生しない
         if let lastEndTime = lastPlayedEndTime, Date() <= lastEndTime {
             print("前回の音声がまだ再生中のため、新しい音声を再生しません")
-            print("musicPlayer関数のData(): \(Date())")
             return
         }
         
@@ -66,11 +65,9 @@ class SoundPlayer: NSObject, AVAudioPlayerDelegate {
             music_player = try AVAudioPlayer(data: sound)  // 音楽を指定
             music_player.delegate = self  // デリゲートを設定
             music_player.play()  // 音楽再生
-            print("musicPlayer関数のラベルアナウンスしたData: \(Date())")
             lastPlayedTimes[soundName] = Date()  // 最後に再生した時間を更新
             lastPlayedEndTime = Date().addingTimeInterval(music_player.duration)  // 再生終了時間を設定
             let duration = music_player.duration
-            print("音声ファイルの再生時間(music_Player関数): \(duration) 秒")
         } catch {
             print("エラー発生.音を流せません")
         }
