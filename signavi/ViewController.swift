@@ -10,7 +10,14 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     var previewView = UIImageView() // カメラ映像表示用ビュー
     var cameraManager = CameraManager() // CameraManagerを利用
     
-    var soundPlayer = SoundPlayer()//音声アナウンスを利用するため
+    // AppDelegateのsoundPlayerインスタンスを参照するためのプロパティ
+    var soundPlayer: SoundPlayer {
+        var player: SoundPlayer!
+        DispatchQueue.main.sync {
+            player = (UIApplication.shared.delegate as! AppDelegate).soundPlayer
+        }
+        return player
+    }
     
     var videoSize = CGSize.zero
     
@@ -182,24 +189,12 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         for detection in detections {
             if let label = detection.label {
                 detect_signs.insert(label) // アンラップ後に追加
+                soundPlayer.musicPlayer(Detection_label: label)
             }
         }
         
         frame_count = frame_count + 1
         
-        //数百フレームごとに音声アナウンスしたい
-        if frame_count >= 200 {
-            print("frame_countをリセットします")
-            frame_count = 0
-            //標識がある場合にて再生(emptyじゃない場合のみ)
-            if !detect_signs.isEmpty {
-                print("音を再生します")
-                //音の再生について
-                //soundPlayer.musicPlayer(Detection_label: "この変数は今は使わない")
-                //検出した標識をリセットする
-                detect_signs=[]
-            }
-        }
         
         //設定画面にある 描写on/offの変数(bool)の読み込み
         if UserDefaults.standard.object(forKey: "draw_rectangle") == nil {

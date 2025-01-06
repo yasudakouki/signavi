@@ -26,7 +26,7 @@
 		3992C4FA2D0F390B00B56BB0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3992C4F92D0F390B00B56BB0 /* Main.storyboard */; };
 		39A8130B2CF62816004356E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39A8130A2CF62816004356E5 /* LaunchScreen.storyboard */; };
 		39A813152CF62FD4004356E5 /* best_640.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 39A813142CF62FD4004356E5 /* best_640.mlpackage */; };
-		39A813172CF6300D004356E5 /* soundplayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A813162CF6300D004356E5 /* soundplayer.swift */; };
+		39A813172CF6300D004356E5 /* soundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A813162CF6300D004356E5 /* soundPlayer.swift */; };
 		39A8131B2CF788D3004356E5 /* yolo11m_speed_limit_40.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 39A8131A2CF788D3004356E5 /* yolo11m_speed_limit_40.mlpackage */; };
 		BB22EA982D21668E00ECE39F /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BB22EA972D21668E00ECE39F /* Settings.bundle */; };
 /* End PBXBuildFile section */
@@ -72,7 +72,7 @@
 		39A813042CF624BA004356E5 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		39A8130A2CF62816004356E5 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		39A813142CF62FD4004356E5 /* best_640.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = best_640.mlpackage; sourceTree = "<group>"; };
-		39A813162CF6300D004356E5 /* soundplayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = soundplayer.swift; sourceTree = "<group>"; };
+		39A813162CF6300D004356E5 /* soundPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = soundPlayer.swift; sourceTree = "<group>"; };
 		39A8131A2CF788D3004356E5 /* yolo11m_speed_limit_40.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = yolo11m_speed_limit_40.mlpackage; sourceTree = "<group>"; };
 		BB22EA972D21668E00ECE39F /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -140,7 +140,7 @@
 				391DA6752CF5B0A6007DF9C8 /* Assets.xcassets */,
 				BB22EA972D21668E00ECE39F /* Settings.bundle */,
 				394176EE2D00633F0006F62D /* colorUtility.swift */,
-				39A813162CF6300D004356E5 /* soundplayer.swift */,
+				39A813162CF6300D004356E5 /* soundPlayer.swift */,
 				398204382D084D990083B57C /* SettingViewController.swift */,
 				398204362D084A7E0083B57C /* SettingsView.swift */,
 				3992C4F92D0F390B00B56BB0 /* Main.storyboard */,
@@ -325,7 +325,7 @@
 				39A813152CF62FD4004356E5 /* best_640.mlpackage in Sources */,
 				398204392D084DA20083B57C /* SettingViewController.swift in Sources */,
 				394176E52D0044840006F62D /* CameraManager.swift in Sources */,
-				39A813172CF6300D004356E5 /* soundplayer.swift in Sources */,
+				39A813172CF6300D004356E5 /* soundPlayer.swift in Sources */,
 				391DA6A02CF5B15B007DF9C8 /* ViewController.swift in Sources */,
 				391DA6A22CF5B1D9007DF9C8 /* AppDelegate.swift in Sources */,
 				394176E12CFFD98E0006F62D /* yolov8n.mlpackage in Sources */,
