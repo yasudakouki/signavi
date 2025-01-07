@@ -19,6 +19,7 @@ class FirstSettingViewController: UIViewController {
     @IBAction func JP_button_func(_ sender: Any) {
         print("JP:tapされた")
         UserDefaults.standard.set(true, forKey: "first_setting_TF")
+        UserDefaults.standard.set("JP", forKey: "select_language")
         print("初期起動を保存しました: true")
         performSegue(withIdentifier: "change_announce_window", sender: nil)
     }
@@ -27,6 +28,7 @@ class FirstSettingViewController: UIViewController {
     @IBAction func EN_button_func(_ sender: Any) {
         print("EN:tapされた")
         UserDefaults.standard.set(true, forKey: "first_setting_TF")
+        UserDefaults.standard.set("EN", forKey: "select_language")
         print("初期起動を保存しました: true")
         performSegue(withIdentifier: "change_announce_window", sender: nil)
     }
@@ -35,6 +37,7 @@ class FirstSettingViewController: UIViewController {
     @IBAction func KR_button(_ sender: Any) {
         print("KR:tapされた")
         UserDefaults.standard.set(true, forKey: "first_setting_TF")
+        UserDefaults.standard.set("KR", forKey: "select_language")
         print("初期起動を保存しました: true")
         performSegue(withIdentifier: "change_announce_window", sender: nil)
     }
@@ -43,6 +46,7 @@ class FirstSettingViewController: UIViewController {
     @IBAction func CN_button(_ sender: Any) {
         print("CN:tapされた")
         UserDefaults.standard.set(true, forKey: "first_setting_TF")
+        UserDefaults.standard.set("CN", forKey: "select_language")
         print("初期起動を保存しました: true")
         performSegue(withIdentifier: "change_announce_window", sender: nil)
     }
@@ -51,6 +55,9 @@ class FirstSettingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // MARK: ボタン等の設定
+        
         // 現在の画面サイズを取得
         let screenWidth = UIScreen.main.bounds.width
         let screenHeight = UIScreen.main.bounds.height
@@ -116,6 +123,11 @@ class FirstSettingViewController: UIViewController {
         // ラベルの位置を中央に設定
         CN_button.center = CGPoint(x: screenWidth / 2, y: screenHeight*6 / 7)
 
+        
+        
+        // MARK: FPS設定などの初期を決めておく
+        UserDefaults.standard.set(true, forKey: "draw_rectangle")
+        UserDefaults.standard.set(20, forKey: "setting_fps_rate")
         
         
         

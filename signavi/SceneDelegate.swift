@@ -58,7 +58,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Called when the scene has moved from an inactive state to an active state.
         // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
         originalBrightness = UIScreen.main.brightness
-        UIScreen.main.brightness = 0.2
+        let auto_luminus = UserDefaults.standard.object(forKey: "auto_luminus") as? Bool ?? false
+        if auto_luminus {
+            UIScreen.main.brightness = 0.1
+        }
         print("diddecomeactive呼び出し")
     }
 
@@ -67,7 +70,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This may occur due to temporary interruptions (ex. an incoming phone call).
         print("willresignactive呼び出し")
         //ホーム等に戻る際に明るさを既存に戻す
-        if let brightness = originalBrightness {
+        let auto_luminus = UserDefaults.standard.object(forKey: "auto_luminus") as? Bool ?? false
+        if auto_luminus {
+            
+            guard let brightness = originalBrightness else { return }
             UIScreen.main.brightness = brightness
         }
     }
@@ -76,13 +82,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Called as the scene transitions from the background to the foreground.
         // Use this method to undo the changes made on entering the background.
         print("willenterfore呼び出し")
-        // 画面がフォアグラウンドに戻るときに明るさを変更する
-        //まずはアプリ起動前の明るさを保存する
-        print("既存の明るさ設定を保存")
-        originalBrightness = UIScreen.main.brightness
-        // 明るさを変更する
-        UIScreen.main.brightness = 0.5
-        print("明るさを変更した")
+
        
     }
 

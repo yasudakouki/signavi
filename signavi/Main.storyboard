@@ -91,6 +91,15 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="warning_test2" translatesAutoresizingMaskIntoConstraints="NO" id="TgU-ez-OaK">
                                 <rect key="frame" x="0.0" y="0.0" width="440" height="956"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GPT-ZU-FBW">
+                                <rect key="frame" x="74" y="426" width="292" height="187"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <string key="text">アプリを過信するな
+しっかり運転しろ</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="OtU-Zu-d0O"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -103,12 +112,13 @@
                     </view>
                     <navigationItem key="navigationItem" id="kY5-kY-6u1"/>
                     <connections>
+                        <outlet property="announce_text" destination="GPT-ZU-FBW" id="0yi-uc-vcQ"/>
                         <segue destination="BYZ-38-t0r" kind="presentation" identifier="change_main_window" modalPresentationStyle="fullScreen" id="E5c-8E-GZ0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T08-kW-16s" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-97.093023255813961" y="-2.6162790697674416"/>
+            <point key="canvasLocation" x="-98.181818181818187" y="-3.1380753138075317"/>
         </scene>
         <!--First Setting View Controller-->
         <scene sceneID="ru2-V0-u8G">
