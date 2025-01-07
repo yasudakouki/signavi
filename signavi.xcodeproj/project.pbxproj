@@ -29,9 +29,9 @@
 		39A813152CF62FD4004356E5 /* best_640.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 39A813142CF62FD4004356E5 /* best_640.mlpackage */; };
 		39A813172CF6300D004356E5 /* soundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A813162CF6300D004356E5 /* soundPlayer.swift */; };
 		39A8131B2CF788D3004356E5 /* yolo11m_speed_limit_40.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 39A8131A2CF788D3004356E5 /* yolo11m_speed_limit_40.mlpackage */; };
-		BB22EA982D21668E00ECE39F /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BB22EA972D21668E00ECE39F /* Settings.bundle */; };
 		39D65A7C2D1196F80015EE60 /* best_yasuda.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 39D65A7B2D1196F80015EE60 /* best_yasuda.mlpackage */; };
 		39D65A7E2D126AE20015EE60 /* AnnounceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D65A7D2D126AD50015EE60 /* AnnounceViewController.swift */; };
+		BB22EA982D21668E00ECE39F /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BB22EA972D21668E00ECE39F /* Settings.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,9 +78,9 @@
 		39A813142CF62FD4004356E5 /* best_640.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = best_640.mlpackage; sourceTree = "<group>"; };
 		39A813162CF6300D004356E5 /* soundPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = soundPlayer.swift; sourceTree = "<group>"; };
 		39A8131A2CF788D3004356E5 /* yolo11m_speed_limit_40.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = yolo11m_speed_limit_40.mlpackage; sourceTree = "<group>"; };
-		BB22EA972D21668E00ECE39F /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		39D65A7B2D1196F80015EE60 /* best_yasuda.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = best_yasuda.mlpackage; sourceTree = "<group>"; };
 		39D65A7D2D126AD50015EE60 /* AnnounceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnounceViewController.swift; sourceTree = "<group>"; };
+		BB22EA972D21668E00ECE39F /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -513,7 +513,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = 23P69HQY7D;
+				DEVELOPMENT_TEAM = MC7CLNYXK7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = signavi/Info.plist;
@@ -545,7 +545,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = 23P69HQY7D;
+				DEVELOPMENT_TEAM = MC7CLNYXK7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = signavi/Info.plist;

@@ -4,9 +4,11 @@ import SwiftUI
 class AnnounceViewController: UIViewController {
     
     @IBOutlet weak var announce_text: UILabel! // ラベル
+    var soundPlayer = SoundPlayer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        soundPlayer.playWarningSound()  // 警告音を再生
         
         
         // 現在の画面サイズを取得
@@ -14,7 +16,7 @@ class AnnounceViewController: UIViewController {
         let screenHeight = UIScreen.main.bounds.height
         
         
-        let select_language = UserDefaults.standard.string(forKey: "JP") ?? "EN"
+        let select_language = UserDefaults.standard.string(forKey: "select_language") ?? "EN"
 
         switch select_language {
         case "JP":
