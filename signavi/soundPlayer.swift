@@ -16,18 +16,18 @@ class SoundPlayer: NSObject, AVAudioPlayerDelegate {
 
     private func loadSounds() {
         let soundNames = [
-            "warning_ja", "warning_en", "warning_ko", "warning_ch",
-            "stop_ja", "stop_en", "stop_ko", "stop_ch",
-            "no_parking_ja", "no_parking_en", "no_parking_ko", "no_parking_ch",
-            "speed_30_ja", "speed_30_en", "speed_30_ko", "speed_30_ch",
-            "speed_40_ja", "speed_40_en", "speed_40_ko", "speed_40_ch",
-            "speed_50_ja", "speed_50_en", "speed_50_ko", "speed_50_ch",
-            "slowdown_ja", "slowdown_en", "slowdown_ko", "slowdown_ch",
-            "no_entry_ja", "no_entry_en", "no_entry_ko", "no_entry_ch",
-            "pedestrian_crossing_ja", "pedestrian_crossing_en", "pedestrian_crossing_ko", "pedestrian_crossing_ch",
-            "no_parking_allowed_ja", "no_parking_allowed_en", "no_parking_allowed_ko", "no_parking_allowed_ch",
-            "turning_prohibited_ja", "turning_prohibited_en", "turning_prohibited_ko", "turning_prohibited_ch",
-            "no_overtaking_ja", "no_overtaking_en", "no_overtaking_ko", "no_overtaking_ch"
+            "warning_JP", "warning_EN", "warning_KR", "warning_CN",
+            "stop_JP", "stop_EN", "stop_KR", "stop_CN",
+            "no_parking_JP", "no_parking_EN", "no_parking_KR", "no_parking_CN",
+            "speed_30_JP", "speed_30_EN", "speed_30_KR", "speed_30_CN",
+            "speed_40_JP", "speed_40_EN", "speed_40_KR", "speed_40_CN",
+            "speed_50_JP", "speed_50_EN", "speed_50_KR", "speed_50_CN",
+            "slowdown_JP", "slowdown_EN", "slowdown_KR", "slowdown_CN",
+            "no_entry_JP", "no_entry_EN", "no_entry_KR", "no_entry_CN",
+            "pedestrian_crossing_JP", "pedestrian_crossing_EN", "pedestrian_crossing_KR", "pedestrian_crossing_CN",
+            "no_parking_allowed_JP", "no_parking_allowed_EN", "no_parking_allowed_KR", "no_parking_allowed_CN",
+            "turning_prohibited_JP", "turning_prohibited_EN", "turning_prohibited_KR", "turning_prohibited_CN",
+            "no_overtaking_JP", "no_overtaking_EN", "no_overtaking_KR", "no_overtaking_CN"
         ]
         
         for name in soundNames {
@@ -40,14 +40,15 @@ class SoundPlayer: NSObject, AVAudioPlayerDelegate {
     }
     
     // ラベル名と言語を元に音楽を再生
-    func musicPlayer(Detection_label: String, language: String = "ja") {
-        let soundName = "\(Detection_label)_\(language)"
-        print("Detected objectの値: \(soundName)")
-
-        guard let sound = sounds[soundName]?.data else {
-            print("エラー発生.音を流せません")
-            return
-        }
+    func musicPlayer(Detection_label: String, language: String = "JP") {
+        //let language = UserDefaults(key:"setting_lang")
+        //let soundName = "\(Detection_label)_\(language)"
+        // print("Detected objectの値: \(soundName)")
+        
+//        guard let sound = sounds[soundName]?.data else {
+//            print("エラー発生.音を流せません")
+//            return
+//        }
         
         // 再生中の場合は新しい音声を再生しない
         if let lastEndTime = lastPlayedEndTime, Date() <= lastEndTime {
@@ -55,17 +56,17 @@ class SoundPlayer: NSObject, AVAudioPlayerDelegate {
             return
         }
         
-        // 同じラベルの音声は30秒以内に再生しない
-        if let lastPlayedTime = lastPlayedTimes[soundName], Date().timeIntervalSince(lastPlayedTime) < 30 {
-            print("同じラベルの音声は30秒以内に再生されました。再生をスキップします。")
-            return
-        }
+//        // 同じラベルの音声は30秒以内に再生しない
+//        if let lastPlayedTime = lastPlayedTimes[soundName], Date().timeIntervalSince(lastPlayedTime) < 30 {
+//            print("同じラベルの音声は30秒以内に再生されました。再生をスキップします。")
+//            return
+//        }
         
         do {
-            music_player = try AVAudioPlayer(data: sound)  // 音楽を指定
+//            music_player = try AVAudioPlayer(data: sound)  // 音楽を指定
             music_player.delegate = self  // デリゲートを設定
             music_player.play()  // 音楽再生
-            lastPlayedTimes[soundName] = Date()  // 最後に再生した時間を更新
+            // lastPlayedTimes[soundName] = Date()  // 最後に再生した時間を更新
             lastPlayedEndTime = Date().addingTimeInterval(music_player.duration)  // 再生終了時間を設定
             let duration = music_player.duration
         } catch {
@@ -82,7 +83,7 @@ class SoundPlayer: NSObject, AVAudioPlayerDelegate {
     }
     
     // 警告音を再生
-    func playWarningSound(language: String = "ja") {
+    func playWarningSound(language: String = "JP") {
         let soundName = "warning_\(language)"
         guard let sound = sounds[soundName]?.data else {
             print("エラー発生.音を流せません")

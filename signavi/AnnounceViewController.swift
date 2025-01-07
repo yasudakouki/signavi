@@ -14,7 +14,7 @@ class AnnounceViewController: UIViewController {
         let screenHeight = UIScreen.main.bounds.height
         
         
-        let select_language = UserDefaults.standard.string(forKey: "select_language") ?? "EN"
+        let select_language = UserDefaults.standard.string(forKey: "JP") ?? "EN"
 
         switch select_language {
         case "JP":
