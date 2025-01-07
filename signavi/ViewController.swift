@@ -37,7 +37,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     var desiredFrameRate = 20 // フレームレート設定
     
     
-    //アプリでのカメラ等の初期設定用 １回のみ実行
+    // MARK: アプリでのカメラ等の初期設定用 １回のみ実行
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Setting up camera...")
@@ -66,7 +66,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     
     
     
-    //画面遷移時(設定から戻ってきて実行する)　1回目はskipする
+    // MARK: 画面遷移時(設定から戻ってきて実行する)　1回目はskipする
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -106,7 +106,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     
     
     
-    
+    // MARK: UIなどの設定
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
@@ -159,6 +159,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         view.bringSubviewToFront(estimate_cals_time)
     }
     
+    // MARK: カメラ映像からの処理について
     // AVCaptureVideoDataOutputSampleBufferDelegateのメソッド
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         //演算時間の計算に使用
