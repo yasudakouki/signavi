@@ -9,14 +9,27 @@ class RenderManager {
     
 
     // 検出結果を画面に描画する関数
-    func render(detections: [Detection], pixelBuffer: CVPixelBuffer, onView view: UIView,videoSize: CGSize) -> UIImage {
+    func render(detections: [Detection], pixelBuffer: CVPixelBuffer, onView view: UIView,videoSize: CGSize , RectVisible: Bool) -> UIImage {
         // 以前の描画を消去
         //view.layer.sublayers?.forEach { $0.removeFromSuperlayer() }
         //view.subviews.forEach { $0.removeFromSuperview() }
-
-        let drawImage = self.drawRectsOnImage(detections, pixelBuffer, videoSize: videoSize)!
         
-        return drawImage
+        if RectVisible == true {
+            let drawImage = self.drawRectsOnImage(detections, pixelBuffer, videoSize: videoSize)!
+            
+            return drawImage
+            
+        }else{
+            let drawImage = self.drawImageWithoutDetection(
+                pixelBuffer, videoSize: videoSize)!
+            
+            return drawImage
+        }
+            
+            
+
+        
+        //return drawImage
     }
 
     // バウンディングボックスを描画する関数
@@ -79,10 +92,42 @@ class RenderManager {
             }
         }
         
+        
+        
         // 描画した画像を作成して返す
         guard let newImage = cgContext.makeImage() else { return nil }
         return UIImage(cgImage: newImage)
     }
+    
+    
+    
+    // カメラ映像のみを描画する関数
+    func drawImageWithoutDetection(_ pixelBuffer: CVPixelBuffer, videoSize: CGSize) -> UIImage? {
+        // CIImageに変換
+        let ciImage = CIImage(cvPixelBuffer: pixelBuffer)
+
+        // CIContextを使ってCGImageを作成
+        guard let cgImage = ciContext.createCGImage(ciImage, from: ciImage.extent) else { return nil }
+
+        let size = ciImage.extent.size
+
+        // CGContextを作成して描画準備
+        guard let cgContext = CGContext(data: nil,
+                                        width: Int(videoSize.width),
+                                        height: Int(videoSize.height),
+                                        bitsPerComponent: 8,
+                                        bytesPerRow: 4 * Int(videoSize.width),
+                                        space: CGColorSpaceCreateDeviceRGB(),
+                                        bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue) else { return nil }
+
+        // 元の画像を描画
+        cgContext.draw(cgImage, in: CGRect(origin: .zero, size: size))
+
+        // 描画した画像を作成して返す
+        guard let newImage = cgContext.makeImage() else { return nil }
+        return UIImage(cgImage: newImage)
+    }
+
 
 
 }

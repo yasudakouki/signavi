@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <device id="retina6_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
@@ -13,30 +13,31 @@
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sA1-l3-rsJ">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="440" height="956"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="signavi" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="kdY-yy-NIy">
-                                <rect key="frame" x="40" y="367" width="312" height="118"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="signavi" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="kdY-yy-NIy">
+                                <rect key="frame" x="20" y="403" width="400" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="400" id="Wot-7f-f8M"/>
+                                    <constraint firstAttribute="height" constant="150" id="ou5-5L-iTV"/>
+                                </constraints>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="AppleColorEmoji" family="Apple Color Emoji" pointSize="86"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="fU5-ui-R38"/>
-                        <color key="backgroundColor" red="0.278" green="0.733" blue="0.925" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.27800000000000002" green="0.73299999999999998" blue="0.92500000000000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="kdY-yy-NIy" firstAttribute="centerX" secondItem="sA1-l3-rsJ" secondAttribute="centerX" id="centerXConstraint"/>
-                            <constraint firstItem="kdY-yy-NIy" firstAttribute="centerY" secondItem="sA1-l3-rsJ" secondAttribute="centerY" id="centerYConstraint"/>
-                            <constraint firstItem="kdY-yy-NIy" firstAttribute="width" secondItem="sA1-l3-rsJ" secondAttribute="width" multiplier="0.8" id="widthConstraint"/>
-                            <constraint firstItem="kdY-yy-NIy" firstAttribute="height" secondItem="sA1-l3-rsJ" secondAttribute="height" multiplier="0.2" id="heightConstraint"/>
+                            <constraint firstItem="kdY-yy-NIy" firstAttribute="centerX" secondItem="sA1-l3-rsJ" secondAttribute="centerX" id="QSh-VG-cNo"/>
+                            <constraint firstItem="kdY-yy-NIy" firstAttribute="centerY" secondItem="sA1-l3-rsJ" secondAttribute="centerY" id="Vdk-7O-ONl"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="52.671755725190835" y="374.64788732394368"/>
+            <point key="canvasLocation" x="51.81818181818182" y="374.05857740585776"/>
         </scene>
     </scenes>
     <color key="tintColor" systemColor="labelColor"/>
