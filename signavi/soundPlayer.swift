@@ -40,15 +40,23 @@ class SoundPlayer: NSObject, AVAudioPlayerDelegate {
     }
     
     // ラベル名と言語を元に音楽を再生
-    func musicPlayer(Detection_label: String, language: String = "JP") {
-        //let language = UserDefaults(key:"setting_lang")
-        //let soundName = "\(Detection_label)_\(language)"
-        // print("Detected objectの値: \(soundName)")
+    func musicPlayer(Detection_label: String, language: String = "JP", confidence: Float) {
+        // confidenceが設定した閾値より低ければ、ここで再生をスキップ
+        let threshold: Float = 0.8  // ← 好きな値に設定
+        if confidence < threshold {
+            print("Confidence (\(confidence)) は閾値(\(threshold))未満のため音声を流しません")
+            return
+        }
+
+        // 音声再生
+        let language = UserDefaults.standard.string(forKey: "select_language") ?? "JP"
+        let soundName = "\(Detection_label)_\(language)"
+        print("Detected objectの値: \(soundName)")
         
-//        guard let sound = sounds[soundName]?.data else {
-//            print("エラー発生.音を流せません")
-//            return
-//        }
+        guard let sound = sounds[soundName]?.data else {
+            print("エラー発生.音を流せません")
+            return
+        }
         
         // 再生中の場合は新しい音声を再生しない
         if let lastEndTime = lastPlayedEndTime, Date() <= lastEndTime {
@@ -56,17 +64,17 @@ class SoundPlayer: NSObject, AVAudioPlayerDelegate {
             return
         }
         
-//        // 同じラベルの音声は30秒以内に再生しない
-//        if let lastPlayedTime = lastPlayedTimes[soundName], Date().timeIntervalSince(lastPlayedTime) < 30 {
-//            print("同じラベルの音声は30秒以内に再生されました。再生をスキップします。")
-//            return
-//        }
+        // 同じラベルの音声は30秒以内に再生しない
+        if let lastPlayedTime = lastPlayedTimes[soundName], Date().timeIntervalSince(lastPlayedTime) < 30 {
+            print("同じラベルの音声は30秒以内に再生されました。再生をスキップします。")
+            return
+        }
         
         do {
-//            music_player = try AVAudioPlayer(data: sound)  // 音楽を指定
+            music_player = try AVAudioPlayer(data: sound)  // 音楽を指定
             music_player.delegate = self  // デリゲートを設定
             music_player.play()  // 音楽再生
-            // lastPlayedTimes[soundName] = Date()  // 最後に再生した時間を更新
+            lastPlayedTimes[soundName] = Date()  // 最後に再生した時間を更新
             lastPlayedEndTime = Date().addingTimeInterval(music_player.duration)  // 再生終了時間を設定
             let duration = music_player.duration
         } catch {

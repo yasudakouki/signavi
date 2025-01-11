@@ -2,7 +2,7 @@ import SwiftUI
 
 struct SettingView: View {
     
-    //var cameraManager = CameraManager()
+    var cameraManager = CameraManager()
     
     @State private var draw_rectangle: Bool = UserDefaults.standard.bool(forKey: "draw_rectangle")
     @State private var screenBrightness: Float = Float(UIScreen.main.brightness)

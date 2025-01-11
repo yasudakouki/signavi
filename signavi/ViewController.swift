@@ -10,7 +10,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     var previewView = UIImageView() // カメラ映像表示用ビュー
     var cameraManager = CameraManager() // CameraManagerを利用
     
-    /*
+    
     // AppDelegateのsoundPlayerインスタンスを参照するためのプロパティ
     var soundPlayer: SoundPlayer {
         var player: SoundPlayer!
@@ -19,7 +19,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         }
         return player
     }
-     */
+    
     
     var videoSize = CGSize.zero
     
@@ -209,7 +209,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         for detection in detections {
             if let label = detection.label {
                 detect_signs.insert(label) // アンラップ後に追加
-               //soundPlayer.musicPlayer(Detection_label: label)
+                soundPlayer.musicPlayer(Detection_label: label, confidence: detection.confidence)
             }
         }
         
