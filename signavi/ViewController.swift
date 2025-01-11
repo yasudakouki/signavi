@@ -68,6 +68,23 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     
     
     
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // カメラを停止
+        cameraManager.stopSession()
+    }
+    
+    
+    // 画面が表示されるときにカメラを再開
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        cameraManager.resumeSession()
+    }
+
+    
+    
     // MARK: 画面遷移時(設定から戻ってきて実行する)　1回目はskipする
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
