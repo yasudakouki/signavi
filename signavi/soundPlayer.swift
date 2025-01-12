@@ -48,9 +48,19 @@ class SoundPlayer: NSObject, AVAudioPlayerDelegate {
             return
         }
 
+        // ラベルの変換処理(2パターンある標識ラベルを変換する)
+        var label = Detection_label
+        if (label == "stop2") {
+            label = "stop"
+        } else if (label == "slowdown2") {
+            label = "slowdown"
+        } else if (label == "pedestrian_crossing2") {
+            label = "pedestrian_crossing"
+        }   
+
         // 音声再生
         let language = UserDefaults.standard.string(forKey: "select_language") ?? "JP"
-        let soundName = "\(Detection_label)_\(language)"
+        let soundName = "\(label)_\(language)"
         print("Detected objectの値: \(soundName)")
         
         guard let sound = sounds[soundName]?.data else {
@@ -76,7 +86,6 @@ class SoundPlayer: NSObject, AVAudioPlayerDelegate {
             music_player.play()  // 音楽再生
             lastPlayedTimes[soundName] = Date()  // 最後に再生した時間を更新
             lastPlayedEndTime = Date().addingTimeInterval(music_player.duration)  // 再生終了時間を設定
-            let duration = music_player.duration
         } catch {
             print("エラー発生.音を流せません")
         }
