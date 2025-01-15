@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oqD-ru-0Lh">
     <device id="retina6_9" orientation="portrait" appearance="light"/>
+    <accessibilityOverrides isEnabled="YES"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
@@ -88,25 +89,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="440" height="956"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="warning_test2" translatesAutoresizingMaskIntoConstraints="NO" id="TgU-ez-OaK">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="warning_img" translatesAutoresizingMaskIntoConstraints="NO" id="TgU-ez-OaK">
                                 <rect key="frame" x="0.0" y="0.0" width="440" height="956"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GPT-ZU-FBW">
-                                <rect key="frame" x="74" y="426" width="292" height="187"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GPT-ZU-FBW">
+                                <rect key="frame" x="114.66666666666667" y="448" width="210.66666666666663" height="60"/>
                                 <string key="text">アプリを過信するな
 しっかり運転しろ</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" type="system" pointSize="45"/>
+                                </variation>
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="OtU-Zu-d0O"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="GPT-ZU-FBW" firstAttribute="centerY" secondItem="fPK-hB-BaN" secondAttribute="centerY" id="5wN-Su-jyB">
+                                <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
+                                <variation key="heightClass=regular-widthClass=regular" constant="100"/>
+                            </constraint>
                             <constraint firstItem="OtU-Zu-d0O" firstAttribute="bottom" secondItem="TgU-ez-OaK" secondAttribute="bottom" id="CsG-3V-cXL"/>
                             <constraint firstItem="TgU-ez-OaK" firstAttribute="top" secondItem="OtU-Zu-d0O" secondAttribute="top" id="H7Y-73-9fG"/>
                             <constraint firstItem="TgU-ez-OaK" firstAttribute="leading" secondItem="fPK-hB-BaN" secondAttribute="leading" id="Sax-cj-8hq"/>
+                            <constraint firstItem="GPT-ZU-FBW" firstAttribute="centerX" secondItem="fPK-hB-BaN" secondAttribute="centerX" id="YEU-is-Ei9"/>
                             <constraint firstAttribute="trailing" secondItem="TgU-ez-OaK" secondAttribute="trailing" id="doC-ly-NqW"/>
                         </constraints>
                     </view>
@@ -201,7 +212,7 @@ First Setting</string>
     </scenes>
     <resources>
         <image name="gearshape.fill" catalog="system" width="128" height="123"/>
-        <image name="warning_test2" width="1080" height="1080"/>
+        <image name="warning_img" width="1080" height="1920"/>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
