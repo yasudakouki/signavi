@@ -27,9 +27,7 @@
 		39A813172CF6300D004356E5 /* soundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A813162CF6300D004356E5 /* soundPlayer.swift */; };
 		39D65A7E2D126AE20015EE60 /* AnnounceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D65A7D2D126AD50015EE60 /* AnnounceViewController.swift */; };
 		BB22EA982D21668E00ECE39F /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BB22EA972D21668E00ECE39F /* Settings.bundle */; };
-		ED119F732D36432700B3D351 /* train_model_yolo11x.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = ED119F722D36432700B3D351 /* train_model_yolo11x.mlpackage */; };
 		ED119F752D368C0300B3D351 /* train_model_yolo11m_ver6.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = ED119F742D368C0300B3D351 /* train_model_yolo11m_ver6.mlmodel */; };
-		ED119F772D374DF400B3D351 /* yolo_11n_ver6.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = ED119F762D374DF400B3D351 /* yolo_11n_ver6.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,9 +72,7 @@
 		39A813162CF6300D004356E5 /* soundPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = soundPlayer.swift; sourceTree = "<group>"; };
 		39D65A7D2D126AD50015EE60 /* AnnounceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnounceViewController.swift; sourceTree = "<group>"; };
 		BB22EA972D21668E00ECE39F /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
-		ED119F722D36432700B3D351 /* train_model_yolo11x.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = train_model_yolo11x.mlpackage; sourceTree = "<group>"; };
 		ED119F742D368C0300B3D351 /* train_model_yolo11m_ver6.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = train_model_yolo11m_ver6.mlmodel; sourceTree = "<group>"; };
-		ED119F762D374DF400B3D351 /* yolo_11n_ver6.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = yolo_11n_ver6.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,9 +125,7 @@
 			children = (
 				391DA6A12CF5B1D9007DF9C8 /* AppDelegate.swift */,
 				391DA69D2CF5B155007DF9C8 /* SceneDelegate.swift */,
-				ED119F722D36432700B3D351 /* train_model_yolo11x.mlpackage */,
 				ED119F742D368C0300B3D351 /* train_model_yolo11m_ver6.mlmodel */,
-				ED119F762D374DF400B3D351 /* yolo_11n_ver6.mlmodel */,
 				39A813042CF624BA004356E5 /* Info.plist */,
 				391DA69F2CF5B15B007DF9C8 /* ViewController.swift */,
 				3992C4F42D0D594600B56BB0 /* extend_seting.swift */,
@@ -334,10 +328,8 @@
 				3992C4F52D0D594D00B56BB0 /* extend_seting.swift in Sources */,
 				391DA69E2CF5B155007DF9C8 /* SceneDelegate.swift in Sources */,
 				39A4676A2D1487D900739A61 /* FirstSettingViewController.swift in Sources */,
-				ED119F732D36432700B3D351 /* train_model_yolo11x.mlpackage in Sources */,
 				398204372D084A890083B57C /* SettingsView.swift in Sources */,
 				39D65A7E2D126AE20015EE60 /* AnnounceViewController.swift in Sources */,
-				ED119F772D374DF400B3D351 /* yolo_11n_ver6.mlmodel in Sources */,
 				394176E92D0044AF0006F62D /* RenderManager.swift in Sources */,
 				394176EB2D0045DA0006F62D /* Detection.swift in Sources */,
 			);
