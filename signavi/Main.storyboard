@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oqD-ru-0Lh">
-    <device id="retina6_9" orientation="portrait" appearance="light"/>
+    <device id="iPad13_0rounded" orientation="portrait" layout="fullscreen" appearance="light"/>
     <accessibilityOverrides isEnabled="YES"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -16,11 +16,11 @@
             <objects>
                 <viewController storyboardIdentifier="MainWindow" id="BYZ-38-t0r" customClass="ViewController" customModule="signavi" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="440" height="956"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1032" height="1376"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mrt-f4-25s" userLabel="setting_button" customClass="TapAreaExpandableButton" customModule="signavi" customModuleProvider="target">
-                                <rect key="frame" x="310" y="30" width="100" height="100"/>
+                                <rect key="frame" x="902" y="30" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="SE9-fv-gZ5"/>
                                     <constraint firstAttribute="width" constant="100" id="bZ8-3W-IBO"/>
@@ -70,7 +70,7 @@
             <objects>
                 <viewController storyboardIdentifier="SettingWindow" id="xxs-ZJ-KLu" customClass="SettingViewController" customModule="signavi" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Rpx-Ac-eI3">
-                        <rect key="frame" x="0.0" y="0.0" width="440" height="956"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1032" height="1376"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="Ctp-Ko-eni"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -86,18 +86,18 @@
             <objects>
                 <viewController storyboardIdentifier="AnnounceWindow" id="FFE-yV-Q7g" customClass="AnnounceViewController" customModule="signavi" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fPK-hB-BaN">
-                        <rect key="frame" x="0.0" y="0.0" width="440" height="956"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1032" height="1376"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="warning_img" translatesAutoresizingMaskIntoConstraints="NO" id="TgU-ez-OaK">
-                                <rect key="frame" x="0.0" y="0.0" width="440" height="956"/>
+                                <rect key="frame" x="0.0" y="0.0" width="1032" height="1376"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GPT-ZU-FBW">
-                                <rect key="frame" x="114.66666666666667" y="448" width="210.66666666666663" height="60"/>
+                                <rect key="frame" x="326.5" y="734.5" width="379" height="107.5"/>
                                 <string key="text">アプリを過信するな
 しっかり運転しろ</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <fontDescription key="fontDescription" type="system" pointSize="25"/>
@@ -136,7 +136,7 @@
             <objects>
                 <viewController storyboardIdentifier="FirstSettingWindow" id="oqD-ru-0Lh" customClass="FirstSettingViewController" customModule="signavi" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IBe-iG-bji">
-                        <rect key="frame" x="0.0" y="0.0" width="440" height="956"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1032" height="1376"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uqf-gL-fuI">
@@ -212,7 +212,7 @@ First Setting</string>
     </scenes>
     <resources>
         <image name="gearshape.fill" catalog="system" width="128" height="123"/>
-        <image name="warning_img" width="1080" height="1920"/>
+        <image name="warning_img" width="1080" height="1080"/>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
