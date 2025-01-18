@@ -9,17 +9,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
 
     var previewView = UIImageView() // カメラ映像表示用ビュー
     var cameraManager = CameraManager() // CameraManagerを利用
-    
-    
-    // AppDelegateのsoundPlayerインスタンスを参照するためのプロパティ
-    var soundPlayer: SoundPlayer {
-        var player: SoundPlayer!
-        DispatchQueue.main.sync {
-            player = (UIApplication.shared.delegate as! AppDelegate).soundPlayer
-        }
-        return player
-    }
-    
+    var soundPlayer = SoundPlayer()  // SoundPlayerインスタンス
     
     var videoSize = CGSize.zero
     
@@ -146,7 +136,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             width: 50,  // ボタンの幅
             height: 50  // ボタンの高さ
         )
-         */
+        */
             
     }
     

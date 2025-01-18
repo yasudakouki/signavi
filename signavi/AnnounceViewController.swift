@@ -35,25 +35,6 @@ class AnnounceViewController: UIViewController {
             announce_text.text = "select_error"
         }
         
-//        // 画面サイズに基づいてフォントサイズを設定
-//        let fontSize = min(screenWidth, screenHeight) * 0.1
-//        announce_text.font = UIFont.systemFont(ofSize: fontSize)
-//
-//        
-//        
-//        // ラベルが複数行に対応するように設定
-//        announce_text.numberOfLines = 0
-//        announce_text.textAlignment = .left // 
-//        // ラベルの幅を画面の70%に設定
-//        announce_text.frame.size.width = screenWidth * 0.7
-//
-//        // ラベルのサイズをテキストに合わせて調整
-//        announce_text.sizeToFit()
-//
-//        // ラベルの位置を中央に設定（高さ調整に注意）
-//        announce_text.center = CGPoint(x: screenWidth / 2, y: screenHeight *  3 / 5)
-        
-        
         print("アナウンス画面です")
         print("aaaaaaa")
         

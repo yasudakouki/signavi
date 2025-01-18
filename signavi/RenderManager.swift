@@ -26,10 +26,7 @@ class RenderManager {
             return drawImage
         }
             
-            
-
         
-        //return drawImage
     }
 
     // バウンディングボックスを描画する関数
