@@ -9,17 +9,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
 
     var previewView = UIImageView() // カメラ映像表示用ビュー
     var cameraManager = CameraManager() // CameraManagerを利用
-    
-    /*
-    // AppDelegateのsoundPlayerインスタンスを参照するためのプロパティ
-    var soundPlayer: SoundPlayer {
-        var player: SoundPlayer!
-        DispatchQueue.main.sync {
-            player = (UIApplication.shared.delegate as! AppDelegate).soundPlayer
-        }
-        return player
-    }
-     */
+    var soundPlayer = SoundPlayer()  // SoundPlayerインスタンス
     
     var videoSize = CGSize.zero
     
@@ -66,6 +56,23 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         UIApplication.shared.isIdleTimerDisabled = true
     }
     
+    
+    
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // カメラを停止
+        cameraManager.stopSession()
+    }
+    
+    
+    // 画面が表示されるときにカメラを再開
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        cameraManager.resumeSession()
+    }
+
     
     
     // MARK: 画面遷移時(設定から戻ってきて実行する)　1回目はskipする
@@ -129,7 +136,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             width: 50,  // ボタンの幅
             height: 50  // ボタンの高さ
         )
-         */
+        */
             
     }
     
@@ -192,7 +199,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         for detection in detections {
             if let label = detection.label {
                 detect_signs.insert(label) // アンラップ後に追加
-               //soundPlayer.musicPlayer(Detection_label: label)
+                soundPlayer.musicPlayer(Detection_label: label, confidence: detection.confidence)
             }
         }
         

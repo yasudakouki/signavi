@@ -19,7 +19,6 @@
 		394176E92D0044AF0006F62D /* RenderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394176E82D0044AA0006F62D /* RenderManager.swift */; };
 		394176EB2D0045DA0006F62D /* Detection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394176EA2D0045CF0006F62D /* Detection.swift */; };
 		394176ED2D0062EE0006F62D /* DetectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394176EC2D0062E50006F62D /* DetectionManager.swift */; };
-		394176EF2D00634A0006F62D /* colorUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394176EE2D00633F0006F62D /* colorUtility.swift */; };
 		398204372D084A890083B57C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398204362D084A7E0083B57C /* SettingsView.swift */; };
 		398204392D084DA20083B57C /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398204382D084D990083B57C /* SettingViewController.swift */; };
 		3992C4F52D0D594D00B56BB0 /* extend_seting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3992C4F42D0D594600B56BB0 /* extend_seting.swift */; };
@@ -31,7 +30,11 @@
 		39A8131B2CF788D3004356E5 /* yolo11m_speed_limit_40.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 39A8131A2CF788D3004356E5 /* yolo11m_speed_limit_40.mlpackage */; };
 		39D65A7C2D1196F80015EE60 /* best_yasuda.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 39D65A7B2D1196F80015EE60 /* best_yasuda.mlpackage */; };
 		39D65A7E2D126AE20015EE60 /* AnnounceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D65A7D2D126AD50015EE60 /* AnnounceViewController.swift */; };
+		BB20D5502D33B34400259B62 /* yolo11m_all_dataset_ver3.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = BB20D54F2D33B34400259B62 /* yolo11m_all_dataset_ver3.mlpackage */; };
 		BB22EA982D21668E00ECE39F /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BB22EA972D21668E00ECE39F /* Settings.bundle */; };
+		ED119F732D36432700B3D351 /* train_model_yolo11x.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = ED119F722D36432700B3D351 /* train_model_yolo11x.mlpackage */; };
+		ED119F752D368C0300B3D351 /* train_model_yolo11m_ver6.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = ED119F742D368C0300B3D351 /* train_model_yolo11m_ver6.mlmodel */; };
+		ED119F772D374DF400B3D351 /* yolo_11n_ver6.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = ED119F762D374DF400B3D351 /* yolo_11n_ver6.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,7 +70,6 @@
 		394176E82D0044AA0006F62D /* RenderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderManager.swift; sourceTree = "<group>"; };
 		394176EA2D0045CF0006F62D /* Detection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detection.swift; sourceTree = "<group>"; };
 		394176EC2D0062E50006F62D /* DetectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectionManager.swift; sourceTree = "<group>"; };
-		394176EE2D00633F0006F62D /* colorUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = colorUtility.swift; sourceTree = "<group>"; };
 		398204362D084A7E0083B57C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		398204382D084D990083B57C /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		3992C4F42D0D594600B56BB0 /* extend_seting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extend_seting.swift; sourceTree = "<group>"; };
@@ -80,7 +82,11 @@
 		39A8131A2CF788D3004356E5 /* yolo11m_speed_limit_40.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = yolo11m_speed_limit_40.mlpackage; sourceTree = "<group>"; };
 		39D65A7B2D1196F80015EE60 /* best_yasuda.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = best_yasuda.mlpackage; sourceTree = "<group>"; };
 		39D65A7D2D126AD50015EE60 /* AnnounceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnounceViewController.swift; sourceTree = "<group>"; };
+		BB20D54F2D33B34400259B62 /* yolo11m_all_dataset_ver3.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = yolo11m_all_dataset_ver3.mlpackage; sourceTree = "<group>"; };
 		BB22EA972D21668E00ECE39F /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		ED119F722D36432700B3D351 /* train_model_yolo11x.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = train_model_yolo11x.mlpackage; sourceTree = "<group>"; };
+		ED119F742D368C0300B3D351 /* train_model_yolo11m_ver6.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = train_model_yolo11m_ver6.mlmodel; sourceTree = "<group>"; };
+		ED119F762D374DF400B3D351 /* yolo_11n_ver6.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = yolo_11n_ver6.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,7 +142,11 @@
 				39D65A7B2D1196F80015EE60 /* best_yasuda.mlpackage */,
 				39A8131A2CF788D3004356E5 /* yolo11m_speed_limit_40.mlpackage */,
 				39A813142CF62FD4004356E5 /* best_640.mlpackage */,
+				BB20D54F2D33B34400259B62 /* yolo11m_all_dataset_ver3.mlpackage */,
+				ED119F722D36432700B3D351 /* train_model_yolo11x.mlpackage */,
 				394176E02CFFD98E0006F62D /* yolov8n.mlpackage */,
+				ED119F742D368C0300B3D351 /* train_model_yolo11m_ver6.mlmodel */,
+				ED119F762D374DF400B3D351 /* yolo_11n_ver6.mlmodel */,
 				39A813042CF624BA004356E5 /* Info.plist */,
 				391DA69F2CF5B15B007DF9C8 /* ViewController.swift */,
 				3992C4F42D0D594600B56BB0 /* extend_seting.swift */,
@@ -146,7 +156,6 @@
 				394176EA2D0045CF0006F62D /* Detection.swift */,
 				391DA6752CF5B0A6007DF9C8 /* Assets.xcassets */,
 				BB22EA972D21668E00ECE39F /* Settings.bundle */,
-				394176EE2D00633F0006F62D /* colorUtility.swift */,
 				39A813162CF6300D004356E5 /* soundPlayer.swift */,
 				398204382D084D990083B57C /* SettingViewController.swift */,
 				398204362D084A7E0083B57C /* SettingsView.swift */,
@@ -332,20 +341,23 @@
 			files = (
 				39A8131B2CF788D3004356E5 /* yolo11m_speed_limit_40.mlpackage in Sources */,
 				39A813152CF62FD4004356E5 /* best_640.mlpackage in Sources */,
+				ED119F752D368C0300B3D351 /* train_model_yolo11m_ver6.mlmodel in Sources */,
 				398204392D084DA20083B57C /* SettingViewController.swift in Sources */,
 				394176E52D0044840006F62D /* CameraManager.swift in Sources */,
 				39A813172CF6300D004356E5 /* soundPlayer.swift in Sources */,
 				391DA6A02CF5B15B007DF9C8 /* ViewController.swift in Sources */,
 				391DA6A22CF5B1D9007DF9C8 /* AppDelegate.swift in Sources */,
 				394176E12CFFD98E0006F62D /* yolov8n.mlpackage in Sources */,
+				BB20D5502D33B34400259B62 /* yolo11m_all_dataset_ver3.mlpackage in Sources */,
 				394176ED2D0062EE0006F62D /* DetectionManager.swift in Sources */,
 				3992C4F52D0D594D00B56BB0 /* extend_seting.swift in Sources */,
-				394176EF2D00634A0006F62D /* colorUtility.swift in Sources */,
 				391DA69E2CF5B155007DF9C8 /* SceneDelegate.swift in Sources */,
 				39A4676A2D1487D900739A61 /* FirstSettingViewController.swift in Sources */,
+				ED119F732D36432700B3D351 /* train_model_yolo11x.mlpackage in Sources */,
 				39D65A7C2D1196F80015EE60 /* best_yasuda.mlpackage in Sources */,
 				398204372D084A890083B57C /* SettingsView.swift in Sources */,
 				39D65A7E2D126AE20015EE60 /* AnnounceViewController.swift in Sources */,
+				ED119F772D374DF400B3D351 /* yolo_11n_ver6.mlmodel in Sources */,
 				394176E92D0044AF0006F62D /* RenderManager.swift in Sources */,
 				394176EB2D0045DA0006F62D /* Detection.swift in Sources */,
 			);
@@ -513,7 +525,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = MC7CLNYXK7;
+				DEVELOPMENT_TEAM = N4BWGU3NP7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = signavi/Info.plist;
@@ -529,7 +541,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.tokuyama.signavi;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ryukyu.signavi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -545,7 +557,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = MC7CLNYXK7;
+				DEVELOPMENT_TEAM = N4BWGU3NP7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = signavi/Info.plist;
@@ -561,7 +573,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.tokuyama.signavi;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ryukyu.signavi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

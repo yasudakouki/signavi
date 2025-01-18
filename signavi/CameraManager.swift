@@ -58,4 +58,27 @@ class CameraManager {
             return nil
         }
     }
+    
+    
+    //カメラセッション停止用メソッド
+    func stopSession() {
+        if captureSession.isRunning {
+            DispatchQueue.global(qos: .userInitiated).async {
+                self.captureSession.stopRunning()
+                print("Camera session stopped.")
+            }
+        }
+    }
+    
+    
+    // カメラセッション再開用メソッド
+    func resumeSession() {
+        if !captureSession.isRunning {
+            DispatchQueue.global(qos: .userInitiated).async {
+                self.captureSession.startRunning()
+                print("Camera session resumed.")
+            }
+        }
+    }
+    
 }
