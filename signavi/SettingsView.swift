@@ -20,6 +20,8 @@ struct SettingView: View {
 
     @Environment(\.presentationMode) var presentationMode
     
+    var onShowTutorial: (() -> Void)?  // 再度チュートリアル用
+    
     var body: some View {
         VStack {
             HStack {
@@ -86,6 +88,15 @@ struct SettingView: View {
                         }
                     }
                 }
+                
+                Section(header: Text(localizedText("Tutorial"))) {
+                    Button(action: {
+                        onShowTutorial?()
+                    }) {
+                        // "Show Tutorial Again" をユーザー言語に対応
+                        Text(localizedText("Show Tutorial Again"))
+                    }
+                }
             }
         }
         .navigationTitle(localizedText("Settings"))
@@ -106,7 +117,9 @@ struct SettingView: View {
                 "Camera FPS": "カメラFPS",
                 "Language Selection": "言語選択",
                 "Select Language": "言語を選択",
-                "Settings": "設定"
+                "Settings": "設定",
+                "Tutorial": "チュートリアル",
+                "Show Tutorial Again": "チュートリアルを再表示"
             ][key] ?? key
         case "中文":
             return [
@@ -119,7 +132,9 @@ struct SettingView: View {
                 "Camera FPS": "相机FPS",
                 "Language Selection": "语言选择",
                 "Select Language": "选择语言",
-                "Settings": "设置"
+                "Settings": "设置",
+                "Tutorial": "教程",
+                "Show Tutorial Again": "再次显示教程"
             ][key] ?? key
         case "한국어":
             return [
@@ -132,7 +147,9 @@ struct SettingView: View {
                 "Camera FPS": "카메라 FPS",
                 "Language Selection": "언어 선택",
                 "Select Language": "언어 선택",
-                "Settings": "설정"
+                "Settings": "설정",
+                "Tutorial": "튜토리얼",
+                "Show Tutorial Again": "튜토리얼 다시 보기"
             ][key] ?? key
         default:
             return key

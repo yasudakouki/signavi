@@ -7,7 +7,13 @@ class SettingViewController: UIViewController {
         super.viewDidLoad()
         
         // SwiftUIのSettingViewをHostingControllerでラップ
-        let settingView = SettingView()
+        var settingView = SettingView()
+        
+        // チュートリアルを開く
+        settingView.onShowTutorial = { [weak self] in
+            self?.showTutorialFromSettings()
+        }
+        
         let hostingController = UIHostingController(rootView: settingView)
         
         // HostingControllerのViewを、現在のViewControllerのViewに追加
@@ -28,5 +34,13 @@ class SettingViewController: UIViewController {
         
         // ナビゲーションバーを非表示にする
         self.navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
+    func showTutorialFromSettings() {
+        // TutorialContainerViewController を表示
+        if let tutorialVC = storyboard?.instantiateViewController(withIdentifier: "TutorialContainer") as? TutorialContainerViewController {
+            tutorialVC.modalPresentationStyle = .fullScreen
+            present(tutorialVC, animated: true)
+        }
     }
 }

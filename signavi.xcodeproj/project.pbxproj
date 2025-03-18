@@ -27,6 +27,15 @@
 		39A813172CF6300D004356E5 /* soundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A813162CF6300D004356E5 /* soundPlayer.swift */; };
 		39D65A7E2D126AE20015EE60 /* AnnounceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D65A7D2D126AD50015EE60 /* AnnounceViewController.swift */; };
 		BB22EA982D21668E00ECE39F /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BB22EA972D21668E00ECE39F /* Settings.bundle */; };
+		ED0E37C72D86D29A0098F817 /* TutorialPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0E37C62D86D29A0098F817 /* TutorialPageViewController.swift */; };
+		ED0E37C92D86D6630098F817 /* Slide1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0E37C82D86D6630098F817 /* Slide1ViewController.swift */; };
+		ED0E37CB2D86D6830098F817 /* Slide2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0E37CA2D86D6830098F817 /* Slide2ViewController.swift */; };
+		ED0E37CD2D86D6940098F817 /* Slide3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0E37CC2D86D6940098F817 /* Slide3ViewController.swift */; };
+		ED0E37CF2D86D6A90098F817 /* Slide7ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0E37CE2D86D6A90098F817 /* Slide7ViewController.swift */; };
+		ED0E37D12D8835E70098F817 /* Slide4ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0E37D02D8835E70098F817 /* Slide4ViewController.swift */; };
+		ED0E37D32D8835F40098F817 /* Slide5ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0E37D22D8835F40098F817 /* Slide5ViewController.swift */; };
+		ED0E37D52D8835FF0098F817 /* Slide6ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0E37D42D8835FF0098F817 /* Slide6ViewController.swift */; };
+		ED0E37D72D883F570098F817 /* TutorialContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0E37D62D883F570098F817 /* TutorialContainerViewController.swift */; };
 		ED119F752D368C0300B3D351 /* train_model_yolo11m_ver6.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = ED119F742D368C0300B3D351 /* train_model_yolo11m_ver6.mlmodel */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +81,15 @@
 		39A813162CF6300D004356E5 /* soundPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = soundPlayer.swift; sourceTree = "<group>"; };
 		39D65A7D2D126AD50015EE60 /* AnnounceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnounceViewController.swift; sourceTree = "<group>"; };
 		BB22EA972D21668E00ECE39F /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		ED0E37C62D86D29A0098F817 /* TutorialPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialPageViewController.swift; sourceTree = "<group>"; };
+		ED0E37C82D86D6630098F817 /* Slide1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slide1ViewController.swift; sourceTree = "<group>"; };
+		ED0E37CA2D86D6830098F817 /* Slide2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slide2ViewController.swift; sourceTree = "<group>"; };
+		ED0E37CC2D86D6940098F817 /* Slide3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slide3ViewController.swift; sourceTree = "<group>"; };
+		ED0E37CE2D86D6A90098F817 /* Slide7ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slide7ViewController.swift; sourceTree = "<group>"; };
+		ED0E37D02D8835E70098F817 /* Slide4ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slide4ViewController.swift; sourceTree = "<group>"; };
+		ED0E37D22D8835F40098F817 /* Slide5ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slide5ViewController.swift; sourceTree = "<group>"; };
+		ED0E37D42D8835FF0098F817 /* Slide6ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slide6ViewController.swift; sourceTree = "<group>"; };
+		ED0E37D62D883F570098F817 /* TutorialContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialContainerViewController.swift; sourceTree = "<group>"; };
 		ED119F742D368C0300B3D351 /* train_model_yolo11m_ver6.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = train_model_yolo11m_ver6.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -138,8 +156,17 @@
 				39A813162CF6300D004356E5 /* soundPlayer.swift */,
 				398204382D084D990083B57C /* SettingViewController.swift */,
 				398204362D084A7E0083B57C /* SettingsView.swift */,
-				39D65A7D2D126AD50015EE60 /* AnnounceViewController.swift */,
 				39A467692D1487D800739A61 /* FirstSettingViewController.swift */,
+				39D65A7D2D126AD50015EE60 /* AnnounceViewController.swift */,
+				ED0E37D62D883F570098F817 /* TutorialContainerViewController.swift */,
+				ED0E37C62D86D29A0098F817 /* TutorialPageViewController.swift */,
+				ED0E37C82D86D6630098F817 /* Slide1ViewController.swift */,
+				ED0E37CA2D86D6830098F817 /* Slide2ViewController.swift */,
+				ED0E37CC2D86D6940098F817 /* Slide3ViewController.swift */,
+				ED0E37D02D8835E70098F817 /* Slide4ViewController.swift */,
+				ED0E37D22D8835F40098F817 /* Slide5ViewController.swift */,
+				ED0E37D42D8835FF0098F817 /* Slide6ViewController.swift */,
+				ED0E37CE2D86D6A90098F817 /* Slide7ViewController.swift */,
 				3992C4F92D0F390B00B56BB0 /* Main.storyboard */,
 				39A8130A2CF62816004356E5 /* LaunchScreen.storyboard */,
 			);
@@ -320,18 +347,27 @@
 			files = (
 				ED119F752D368C0300B3D351 /* train_model_yolo11m_ver6.mlmodel in Sources */,
 				398204392D084DA20083B57C /* SettingViewController.swift in Sources */,
+				ED0E37D32D8835F40098F817 /* Slide5ViewController.swift in Sources */,
 				394176E52D0044840006F62D /* CameraManager.swift in Sources */,
 				39A813172CF6300D004356E5 /* soundPlayer.swift in Sources */,
+				ED0E37D52D8835FF0098F817 /* Slide6ViewController.swift in Sources */,
+				ED0E37CB2D86D6830098F817 /* Slide2ViewController.swift in Sources */,
 				391DA6A02CF5B15B007DF9C8 /* ViewController.swift in Sources */,
 				391DA6A22CF5B1D9007DF9C8 /* AppDelegate.swift in Sources */,
+				ED0E37C92D86D6630098F817 /* Slide1ViewController.swift in Sources */,
+				ED0E37CD2D86D6940098F817 /* Slide3ViewController.swift in Sources */,
 				394176ED2D0062EE0006F62D /* DetectionManager.swift in Sources */,
 				3992C4F52D0D594D00B56BB0 /* extend_seting.swift in Sources */,
 				391DA69E2CF5B155007DF9C8 /* SceneDelegate.swift in Sources */,
 				39A4676A2D1487D900739A61 /* FirstSettingViewController.swift in Sources */,
+				ED0E37D12D8835E70098F817 /* Slide4ViewController.swift in Sources */,
 				398204372D084A890083B57C /* SettingsView.swift in Sources */,
+				ED0E37C72D86D29A0098F817 /* TutorialPageViewController.swift in Sources */,
 				39D65A7E2D126AE20015EE60 /* AnnounceViewController.swift in Sources */,
+				ED0E37D72D883F570098F817 /* TutorialContainerViewController.swift in Sources */,
 				394176E92D0044AF0006F62D /* RenderManager.swift in Sources */,
 				394176EB2D0045DA0006F62D /* Detection.swift in Sources */,
+				ED0E37CF2D86D6A90098F817 /* Slide7ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

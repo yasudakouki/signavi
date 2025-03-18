@@ -38,11 +38,21 @@ class AnnounceViewController: UIViewController {
         print("アナウンス画面です")
         print("aaaaaaa")
         
-        // 5秒後に画面遷移
+        // 8秒後に画面遷移
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(announce_sec)) {
+            self.goToNextScreen()
+        }
+    }
+    
+    func goToNextScreen() {
+        let hasSeenTutorial = UserDefaults.standard.bool(forKey: "hasSeenTutorial")
+        
+        if !hasSeenTutorial {
+            // まだチュートリアルを見てないなら -> チュートリアル画面
+            self.performSegue(withIdentifier: "AnnounceToTutorial", sender: nil)
+        } else {
+            // チュートリアルをすでに見たなら -> 直接メインへ
             self.performSegue(withIdentifier: "change_main_window", sender: nil)
         }
-        
-        
     }
 }
